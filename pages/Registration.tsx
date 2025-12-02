@@ -6,9 +6,9 @@ export const Registration: React.FC = () => {
   const { isHighContrast } = useAccessibility();
 
   return (
-    // Increased pt-32/pt-40 to pt-36/pt-48 to clear the header
-    <div className={`min-h-screen py-16 pt-36 md:pt-48 ${isHighContrast ? 'bg-black text-white' : 'bg-gray-50'}`}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    // Updated padding to pt-32/pt-40 and width to max-w-screen-2xl
+    <div className={`min-h-screen py-16 pt-32 md:pt-40 ${isHighContrast ? 'bg-black text-white' : 'bg-gray-50'}`}>
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <header className="mb-12 text-center">
           <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Rejestracja Pacjentów</h1>
@@ -17,7 +17,7 @@ export const Registration: React.FC = () => {
           </p>
         </header>
 
-        <div className="grid gap-8">
+        <div className="grid gap-8 max-w-4xl mx-auto">
           {/* Methods */}
           <div className={`p-8 rounded-2xl shadow-sm ${isHighContrast ? 'bg-gray-900 border border-white' : 'bg-white'}`}>
             <h2 className={`text-2xl font-bold mb-6 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Sposoby rejestracji</h2>

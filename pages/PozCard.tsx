@@ -7,9 +7,9 @@ export const PozCard: React.FC = () => {
   const { isHighContrast } = useAccessibility();
 
   return (
-    // Increased pt-32/pt-40 to pt-36/pt-48 to clear the header
-    <div className={`min-h-screen py-16 pt-36 md:pt-48 ${isHighContrast ? 'bg-black text-white' : 'bg-gray-50'}`}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    // Updated padding to pt-32/pt-40 and width to max-w-screen-2xl
+    <div className={`min-h-screen py-16 pt-32 md:pt-40 ${isHighContrast ? 'bg-black text-white' : 'bg-gray-50'}`}>
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-12">
           <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Karta POZ / Deklaracja</h1>
@@ -18,7 +18,7 @@ export const PozCard: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
            {/* Column 1: Info */}
            <div className={`p-8 rounded-2xl shadow-sm h-full ${isHighContrast ? 'bg-gray-900 border border-white' : 'bg-white'}`}>
              <h2 className={`text-2xl font-bold mb-6 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Dlaczego warto?</h2>
@@ -52,8 +52,8 @@ export const PozCard: React.FC = () => {
               >
                 Pobierz PDF
               </Button>
-              <p className="mt-6 text-sm opacity-75">
-                Możesz również wypełnić deklarację na miejscu w rejestracji.
+              <p className="mt-6 text-sm opacity-80">
+                Format PDF, rozmiar ok. 2 MB
               </p>
            </div>
         </div>

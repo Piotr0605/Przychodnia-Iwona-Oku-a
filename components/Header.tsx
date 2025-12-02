@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, UserPlus, Eye, Type, Clock } from 'lucide-react';
@@ -21,7 +20,6 @@ export const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close drawer on route change
   useEffect(() => {
     closeDrawer();
   }, [location.pathname]);
@@ -64,14 +62,14 @@ export const Header: React.FC = () => {
 
   const isHome = location.pathname === '/';
   
-  // Logic: Solid background if scrolled OR not on home page OR high contrast mode.
-  // On mobile home page at top, it will be transparent.
+  // Logic matches static main.js: Solid if scrolled OR not home OR high contrast.
+  // Importantly: removed isMobile check to allow transparent->white transition on mobile too.
   const showSolidBackground = isScrolled || !isHome || isHighContrast;
   const isDarkText = showSolidBackground && !isHighContrast;
 
   const wrapperClass = isHighContrast 
     ? 'fixed top-0 left-0 w-full z-50 bg-black border-b-2 border-yellow-400'
-    : `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${showSolidBackground ? 'bg-white shadow-md' : 'bg-transparent'}`;
+    : `fixed top-0 left-0 w-full z-50 transition-all duration-300 ${showSolidBackground ? 'bg-white/95 backdrop-blur-md shadow-md' : 'bg-transparent'}`;
 
   const topBarClass = isHighContrast 
     ? 'bg-yellow-400 text-black' 
@@ -87,7 +85,7 @@ export const Header: React.FC = () => {
     <>
       <div className={wrapperClass}>
         <div className={`w-full py-2 px-4 text-xs md:text-sm font-medium transition-colors ${topBarClass}`}>
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+          <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
             <div className="hidden md:flex items-center gap-4 opacity-90">
               <span className="flex items-center gap-1.5"><Clock size={14} /> Pn-Pt: 08:00 – 18:00</span>
               <span className="w-px h-3 bg-current opacity-30"></span>
@@ -107,8 +105,9 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        <header className={`w-full transition-all duration-300 ${showSolidBackground ? 'py-2 md:py-4' : 'py-4 md:py-6'}`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Updated to py-2 to match static version */}
+        <header className={`w-full transition-all duration-300 py-2`}>
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center">
               <Link to="/" className="flex items-center gap-2 md:gap-4 group">
                 <div className={`shrink-0 transition-transform duration-300 group-hover:scale-105 ${isHighContrast ? 'text-yellow-400' : 'text-brand-500'}`}>
@@ -120,8 +119,8 @@ export const Header: React.FC = () => {
                 <div className="flex flex-col justify-center -space-y-0.5 md:-space-y-1">
                    <span className={`hidden md:block text-[10px] md:text-xs uppercase tracking-widest font-bold mb-1 ${isHighContrast ? 'text-yellow-400' : (isDarkText ? 'text-slate-400' : 'text-cyan-100')}`}>NZOZ</span>
                    <div className="flex flex-col leading-none">
-                     <span className={`text-base sm:text-lg md:text-xl font-bold tracking-tight transition-colors ${isHighContrast ? 'text-white' : (isDarkText ? 'text-slate-800' : 'text-white')}`}>Podstawowa</span>
-                     <span className={`text-base sm:text-lg md:text-xl font-bold tracking-tight transition-colors ${isHighContrast ? 'text-white' : (isDarkText ? 'text-brand-600' : 'text-cyan-200')}`}>Opieka Zdrowotna</span>
+                     <span className={`text-sm sm:text-lg md:text-xl font-bold tracking-tight transition-colors ${isHighContrast ? 'text-white' : (isDarkText ? 'text-slate-800' : 'text-white')}`}>Podstawowa</span>
+                     <span className={`text-sm sm:text-lg md:text-xl font-bold tracking-tight transition-colors ${isHighContrast ? 'text-white' : (isDarkText ? 'text-brand-600' : 'text-cyan-200')}`}>Opieka Zdrowotna</span>
                    </div>
                    <span className={`hidden sm:block text-xs md:text-sm font-medium mt-0.5 md:mt-1 ${isHighContrast ? 'text-gray-300' : (isDarkText ? 'text-slate-500' : 'text-white/80')}`}>Iwona Okuła</span>
                 </div>
@@ -144,15 +143,15 @@ export const Header: React.FC = () => {
                         Pacjent
                     </button>
                     {isPatientMenuOpen && (
-                        <div className={`absolute top-full left-0 w-56 pt-2`}>
-                            <div className={`rounded-xl shadow-xl overflow-hidden ${isHighContrast ? 'bg-black border border-yellow-400' : 'bg-white border border-gray-100'}`}>
+                        <div className={`absolute top-full left-0 w-60 pt-2`}>
+                            <div className={`rounded-xl shadow-xl overflow-hidden border py-2 ${isHighContrast ? 'bg-black border-yellow-400' : 'bg-white border-gray-100'}`}>
                                 {patientLinks.map((link) => (
                                     <a 
                                         key={link.name}
                                         href={link.path}
                                         target={link.external ? "_blank" : "_self"}
                                         onClick={(e) => !link.external && handleNavClick(e, link.path)}
-                                        className={`block px-4 py-3 text-sm font-medium transition-colors ${isHighContrast ? 'text-white hover:bg-gray-900 hover:text-yellow-400' : 'text-gray-700 hover:bg-brand-50 hover:text-brand-600'}`}
+                                        className={`block px-4 py-2 text-sm font-medium transition-colors ${isHighContrast ? 'text-white hover:bg-gray-900 hover:text-yellow-400' : 'text-gray-700 hover:bg-gray-50 hover:text-brand-600'}`}
                                     >
                                         {link.name}
                                     </a>

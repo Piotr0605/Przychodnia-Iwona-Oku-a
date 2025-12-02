@@ -8,10 +8,10 @@ export const Privacy: React.FC = () => {
   const { resetConsent } = useCookie();
 
   return (
-    // Increased pt-32/pt-40 to pt-36/pt-48 to clear the header
-    <div className={`min-h-screen py-16 pt-36 md:pt-48 ${isHighContrast ? 'bg-black text-white' : 'bg-gray-50'}`}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`p-8 rounded-2xl shadow-sm ${isHighContrast ? 'bg-gray-900 border border-yellow-400' : 'bg-white'}`}>
+    // Updated padding to pt-32/pt-40 and width to max-w-screen-2xl
+    <div className={`min-h-screen py-16 pt-32 md:pt-40 ${isHighContrast ? 'bg-black text-white' : 'bg-gray-50'}`}>
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`p-8 rounded-2xl shadow-sm max-w-4xl mx-auto ${isHighContrast ? 'bg-gray-900 border border-yellow-400' : 'bg-white'}`}>
           <h1 className={`text-3xl font-bold mb-8 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Polityka Prywatności i Klauzula RODO</h1>
           
           <div className={`space-y-8 ${isHighContrast ? 'text-gray-300' : 'text-gray-700'}`}>

@@ -45,7 +45,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full">
-      {/* HERO SECTION */}
+      {/* HERO SECTION - Updated padding and width */}
       <section className="relative w-full min-h-[700px] flex items-center bg-gray-50 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
@@ -56,7 +56,7 @@ export const Home: React.FC = () => {
           <div className={`absolute inset-0 ${isHighContrast ? 'bg-black/90' : 'bg-gradient-to-b from-cyan-900/90 via-cyan-800/80 to-cyan-900/60'}`}></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-32 md:pt-48 w-full">
+        <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-32 md:pt-40 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-white space-y-6">
               <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-white/20 backdrop-blur-sm border border-white/30 text-white'}`}>
@@ -136,7 +136,7 @@ export const Home: React.FC = () => {
 
       {/* ABOUT US */}
       <section id="o-nas" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-black text-white' : 'bg-white'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
              <div className="max-w-4xl mx-auto text-center">
                 <h2 className={`text-3xl md:text-4xl font-bold mb-8 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>O nas</h2>
                 <div className={`space-y-6 text-lg leading-relaxed text-justify ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>
@@ -156,7 +156,7 @@ export const Home: React.FC = () => {
 
       {/* SERVICES */}
       <section id="uslugi" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white' : 'bg-gray-50'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Nasze Usługi</h2>
             <p className={`max-w-2xl mx-auto ${isHighContrast ? 'text-white' : 'text-gray-600'}`}>
@@ -180,7 +180,7 @@ export const Home: React.FC = () => {
 
       {/* TEAM */}
       <section id="zespol" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-black text-white border-t border-yellow-400' : 'bg-white'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Nasz Zespół</h2>
             <p className={isHighContrast ? 'text-white' : 'text-gray-600'}>
@@ -232,7 +232,7 @@ export const Home: React.FC = () => {
 
       {/* CONTACT & MAP */}
       <section id="kontakt" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white border-t border-yellow-400' : 'bg-gray-50'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div>
