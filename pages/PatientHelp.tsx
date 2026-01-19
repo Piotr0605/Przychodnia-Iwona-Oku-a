@@ -33,13 +33,13 @@ export const PatientHelp: React.FC = () => {
             <div className="space-y-4 mt-6">
                 <div className={`p-4 rounded-lg border ${isHighContrast ? 'border-gray-700' : 'bg-gray-50 border-gray-100'}`}>
                     <h3 className="font-bold text-lg mb-1">Szpital Wojewódzki w Białymstoku</h3>
-                    <p>ul. Skłodowskiej-Curie 26</p>
-                    <a href="tel:857488126" className="text-brand-600 font-bold hover:underline">Tel: 85 748 81 26</a>
+                    <p>ul. Marii Skłodowskiej-Curie 26</p>
+                    <a href="tel:857488126" className="text-brand-600 font-bold hover:underline">Tel: 85 748 81 00</a>
                 </div>
                 <div className={`p-4 rounded-lg border ${isHighContrast ? 'border-gray-700' : 'bg-gray-50 border-gray-100'}`}>
                     <h3 className="font-bold text-lg mb-1">USK (Uniwersytecki Szpital Kliniczny)</h3>
-                    <p>ul. Żurawia 14</p>
-                    <a href="tel:858316333" className="text-brand-600 font-bold hover:underline">Tel: 85 831 63 33</a>
+                    <p>ul. Marii Skłodowskiej-Curie 24a</p>
+                    <a href="tel:858316333" className="text-brand-600 font-bold hover:underline">Tel: 85 831 80 00</a>
                 </div>
             </div>
           </div>

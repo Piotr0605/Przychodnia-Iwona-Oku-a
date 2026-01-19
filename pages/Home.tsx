@@ -66,7 +66,7 @@ export const Home: React.FC = () => {
                 Nowoczesna opieka <br/> dla całej rodziny
               </h1>
               <p className={`text-lg md:text-xl max-w-lg ${isHighContrast ? 'text-white' : 'text-gray-100'}`}>
-                Zapewniamy kompleksową podstawową opiekę zdrowotną (POZ) dla pacjentów w każdym wieku. Zaufaj naszemu doświadczonemu zespołowi lekarzy, pielęgniarek i położnych.
+                Zapewniamy kompleksową podstawową opiekę zdrowotną (POZ) dla pacjentów w każdym wieku. Zaufaj naszemu doświadczonemu zespołowi lekarzy, pielęgniarek, położnej i dietetykowi.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button 
@@ -144,7 +144,7 @@ export const Home: React.FC = () => {
                     NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła to miejsce, w którym zdrowie naszych Pacjentów jest zawsze na pierwszym miejscu. Od wielu lat otaczamy opieką całe rodziny – od najmłodszych po seniorów.
                   </p>
                   <p>
-                    Nasz zespół tworzą doświadczeni lekarze, pielęgniarki i rejestratorki, którzy codziennie dbają o to, by każda wizyta przebiegała w atmosferze zaufania i zrozumienia. Współpracujemy z Narodowym Funduszem Zdrowia, oferując kompleksową opiekę w ramach Podstawowej Opieki Zdrowotnej (POZ), profilaktykę, szczepienia oraz konsultacje specjalistyczne.
+                    Nasz zespół tworzą doświadczeni lekarze, pielęgniarki, położna oraz dietetyk, którzy codziennie dbają o to, by każda wizyta przebiegała w atmosferze zaufania i zrozumienia. Współpracujemy z Narodowym Funduszem Zdrowia, oferując kompleksową opiekę w ramach Podstawowej Opieki Zdrowotnej (POZ), profilaktykę, szczepienia oraz konsultacje specjalistyczne.
                   </p>
                   <p>
                     Naszym celem jest nie tylko leczenie, ale też edukacja i profilaktyka – by nasi Pacjenci mogli cieszyć się zdrowiem każdego dnia.
