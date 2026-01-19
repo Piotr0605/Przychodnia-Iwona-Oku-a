@@ -139,7 +139,7 @@ export const Home: React.FC = () => {
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
              <div className="max-w-4xl mx-auto text-center">
                 <h2 className={`text-3xl md:text-4xl font-bold mb-6 md:mb-8 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>O nas</h2>
-                <div className={`space-y-4 md:space-y-6 text-lg leading-relaxed text-justify ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>
+                <div className={`space-y-4 md:space-y-6 text-lg leading-relaxed ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>
                   <p>
                     NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła to miejsce, w którym zdrowie naszych Pacjentów jest zawsze na pierwszym miejscu. Od wielu lat otaczamy opieką całe rodziny – od najmłodszych po seniorów.
                   </p>
