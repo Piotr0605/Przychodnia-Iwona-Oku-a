@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { AccessibilityProvider } from './contexts/AccessibilityContext';
 import { CookieProvider } from './contexts/CookieContext';
 import { Layout } from './components/Layout';
@@ -29,6 +30,7 @@ const App: React.FC = () => {
               <Route path="/cennik-szczepien" element={<VaccinationPriceList />} />
             </Routes>
           </Layout>
+          <Analytics />
         </HashRouter>
       </CookieProvider>
     </AccessibilityProvider>
