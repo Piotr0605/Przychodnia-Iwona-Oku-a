@@ -37,10 +37,10 @@ export const Home: React.FC = () => {
     { initials: 'EP', name: 'lek. Elżbieta Pawłowska', role: 'Internista, specjalista medycyny rodzinnej' },
     { initials: 'JO', name: 'lek. Joanna Oklińska', role: 'Lekarz' },
     { initials: 'JZ', name: 'lek. Julia Zawadzka', role: 'Rezydentka medycyny rodzinnej' },
-    { initials: 'JP', name: 'mgr. Jolanta Parafianowicz', role: 'Pielęgniarka' },
-    { initials: 'RM', name: 'mgr. Renata Mróz', role: 'Pielęgniarka' },
-    { initials: 'KB', name: 'mgr. Katarzyna Baczyńska', role: 'Położna' },
-    { initials: 'PM', name: 'mgr. Patrycja Michalczuk', role: 'Dietetyk' },
+    { initials: 'JP', name: 'mgr Jolanta Parafianowicz', role: 'Pielęgniarka' },
+    { initials: 'RM', name: 'mgr Renata Mróz', role: 'Pielęgniarka' },
+    { initials: 'KB', name: 'mgr Katarzyna Kitlasz-Baczyńska', role: 'Położna' },
+    { initials: 'PM', name: 'mgr Patrycja Michalczuk', role: 'Dietetyk' },
   ];
 
   return (
