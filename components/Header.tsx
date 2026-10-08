@@ -51,6 +51,7 @@ export const Header: React.FC = () => {
     { name: 'Usługi', path: '/#uslugi' },
     { name: 'Kontakt', path: '/#kontakt' },
     { name: 'Karta POZ / Deklaracja', path: '/karta-poz' },
+    { name: 'Dofinansowanie', path: '/wsparcie-poz' },
   ];
 
   const patientLinks = [
