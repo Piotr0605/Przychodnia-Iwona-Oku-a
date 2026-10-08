@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { CookieBanner } from './CookieBanner';
+import { DocumentMeta } from './DocumentMeta';
 import { useAccessibility } from '../contexts/AccessibilityContext';
 
 interface LayoutProps {
@@ -16,6 +17,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className={`flex flex-col min-h-screen ${fontSizeClass}`}>
+      <DocumentMeta />
       <Header />
       <main className="flex-grow">
         {children}

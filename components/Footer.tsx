@@ -29,6 +29,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/" className={linkClass}>Strona główna</Link></li>
               <li><Link to="/rejestracja" className={linkClass}>Rejestracja</Link></li>
               <li><Link to="/karta-poz" className={linkClass}>Karta POZ / Deklaracja</Link></li>
+              <li><Link to="/wsparcie-poz" className={linkClass}>Dofinansowanie UE – Wsparcie POZ</Link></li>
               <li><Link to="/polityka-rodo" className={linkClass}>Polityka Prywatności (RODO)</Link></li>
             </ul>
           </div>
@@ -45,6 +46,16 @@ export const Footer: React.FC = () => {
           </div>
         </div>
         
+        <div className="bg-white rounded-xl p-4 mb-8 overflow-x-auto">
+          <Link to="/wsparcie-poz" className="block">
+            <img
+              src="/fundusze/logo-feniks-rp-ue-nfz.png"
+              alt="Zestawienie znaków: Fundusze Europejskie, barwy Rzeczypospolitej Polskiej, flaga Unii Europejskiej oraz Narodowy Fundusz Zdrowia"
+              className="w-full min-w-[640px] h-auto"
+            />
+          </Link>
+        </div>
+
         <div className={`border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 ${isHighContrast ? 'border-yellow-400' : 'border-gray-800'}`}>
           <p className={`text-sm ${isHighContrast ? 'text-yellow-400' : 'text-gray-500'}`}>
             &copy; {currentYear} NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła. Wszelkie prawa zastrzeżone.
