@@ -7,7 +7,7 @@ export const Registration: React.FC = () => {
 
   return (
     // Updated padding to pt-32/pt-40 and width to max-w-screen-2xl
-    <div className={`min-h-screen py-16 pt-32 md:pt-40 ${isHighContrast ? 'bg-black text-white' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen py-16 pt-32 md:pt-40 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <header className="mb-12 text-center">

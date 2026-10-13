@@ -21,9 +21,9 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles = "inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none";
   
   const variants = {
-    primary: "bg-brand-500 hover:bg-brand-600 text-white focus:ring-brand-500 shadow-lg shadow-brand-500/30",
-    outline: "border-2 border-brand-500 text-brand-600 hover:bg-brand-50 focus:ring-brand-500",
-    white: "bg-white text-brand-600 hover:bg-gray-50 shadow-md focus:ring-white"
+    primary: "bg-brand-600 hover:bg-brand-700 text-white focus:ring-brand-600 shadow-sm",
+    outline: "border-2 border-brand-600 text-brand-700 hover:bg-brand-50 focus:ring-brand-600",
+    white: "bg-white text-brand-700 hover:bg-brand-50 shadow-sm focus:ring-brand-600"
   };
 
   const combinedClassName = `${baseStyles} ${variants[variant]} ${className}`;

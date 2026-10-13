@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Clock, MapPin, Stethoscope, Phone, Map as MapIcon, Lock, FileText, ClipboardList, Syringe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Clock, MapPin, Stethoscope, Phone, Map as MapIcon, Lock, FileText, ClipboardList, Syringe, Wallet } from 'lucide-react';
 import { Button } from '../components/Button';
 import { useAccessibility } from '../contexts/AccessibilityContext';
 import { useCookie } from '../contexts/CookieContext';
@@ -10,98 +11,98 @@ export const Home: React.FC = () => {
   const [isTeamExpanded, setIsTeamExpanded] = useState(false);
 
   const services = [
-    { 
-      title: 'Porady', 
-      desc: 'Diagnostyka, leczenie chorób ostrych i przewlekłych.', 
-      icon: <Stethoscope size={32} /> 
+    {
+      title: 'Wizyta w ramach NFZ',
+      desc: 'Porada lekarza, leczenie chorób ostrych i przewlekłych oraz profilaktyka dla pacjentów przychodni.',
+      icon: <Stethoscope size={22} />,
     },
-    { 
-      title: 'E-recepty i e-skierowania', 
-      desc: 'Szybko i bezpiecznie.', 
-      icon: <FileText size={32} /> 
+    {
+      title: 'E-recepta i e-skierowanie',
+      desc: 'Dokumenty elektroniczne ustalisz w rejestracji, telefonicznie albo na miejscu.',
+      icon: <FileText size={22} />,
+      to: '/rejestracja',
+      linkLabel: 'Przejdź do rejestracji',
     },
-    { 
-      title: 'Bilanse i orzeczenia', 
-      desc: 'Dla dzieci, młodzieży i dorosłych.', 
-      icon: <ClipboardList size={32} /> 
+    {
+      title: 'Bilans dziecka',
+      desc: 'Bilans zdrowia dzieci i młodzieży oraz orzeczenia.',
+      icon: <ClipboardList size={22} />,
     },
-    { 
-      title: 'Szczepienia', 
-      desc: 'Program szczepień ochronnych i sezonowych.', 
-      icon: <Syringe size={32} /> 
+    {
+      title: 'Szczepienie',
+      desc: 'Szczepienia ochronne i sezonowe.',
+      icon: <Syringe size={22} />,
+      to: '/cennik-szczepien',
+      linkLabel: 'Cennik szczepień',
+    },
+    {
+      title: 'Wizyta prywatna',
+      desc: 'Świadczenia odpłatne, poza wizytą w ramach NFZ.',
+      icon: <Wallet size={22} />,
+      to: '/cennik-uslug',
+      linkLabel: 'Cennik usług',
     },
   ];
 
-  const team = [
-    { initials: 'IO', name: 'lek. Iwona Okuła', role: 'Specjalista medycyny rodzinnej' },
-    { initials: 'EP', name: 'lek. Elżbieta Pawłowska', role: 'Internista, specjalista medycyny rodzinnej' },
-    { initials: 'JO', name: 'lek. Joanna Oklińska', role: 'Lekarz' },
-    { initials: 'JZ', name: 'lek. Julia Zawadzka', role: 'Rezydentka medycyny rodzinnej' },
-    { initials: 'JP', name: 'mgr Jolanta Parafianowicz', role: 'Pielęgniarka' },
-    { initials: 'RM', name: 'mgr Renata Mróz', role: 'Pielęgniarka' },
-    { initials: 'KB', name: 'mgr Katarzyna Kitlasz-Baczyńska', role: 'Położna' },
-    { initials: 'PM', name: 'mgr Patrycja Michalczuk', role: 'Dietetyk' },
+  const teamGroups = [
+    {
+      title: 'Lekarze',
+      people: [
+        { initials: 'IO', name: 'lek. Iwona Okuła', role: 'Specjalista medycyny rodzinnej' },
+        { initials: 'EP', name: 'lek. Elżbieta Pawłowska', role: 'Internista, specjalista medycyny rodzinnej' },
+        { initials: 'JO', name: 'lek. Joanna Oklińska', role: 'Lekarz' },
+        { initials: 'JZ', name: 'lek. Julia Zawadzka', role: 'Rezydentka medycyny rodzinnej' },
+      ],
+    },
+    {
+      title: 'Pielęgniarki i położna',
+      people: [
+        { initials: 'JP', name: 'mgr Jolanta Parafianowicz', role: 'Pielęgniarka' },
+        { initials: 'RM', name: 'mgr Renata Mróz', role: 'Pielęgniarka' },
+        { initials: 'KB', name: 'mgr Katarzyna Kitlasz-Baczyńska', role: 'Położna' },
+      ],
+    },
+    {
+      title: 'Dietetyk',
+      people: [
+        { initials: 'PM', name: 'mgr Patrycja Michalczuk', role: 'Dietetyk' },
+      ],
+    },
   ];
+
+  let personIndex = 0;
 
   return (
     <div className="flex flex-col w-full">
-      {/* HERO SECTION - Updated padding and width */}
-      <section className="relative w-full min-h-[700px] flex items-center bg-gray-50 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=2070&auto=format&fit=crop" 
-            alt="Medyczna ilustracja" 
-            className={`w-full h-full object-cover object-center ${isHighContrast ? 'grayscale opacity-30' : 'opacity-100'}`}
-          />
-          <div className={`absolute inset-0 ${isHighContrast ? 'bg-black/90' : 'bg-gradient-to-b from-cyan-900/90 via-cyan-800/80 to-cyan-900/60'}`}></div>
-        </div>
-
-        <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-32 md:pt-40 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white space-y-6">
-              <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-white/20 backdrop-blur-sm border border-white/30 text-white'}`}>
-                Twój partner w zdrowiu
-              </div>
-              <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold leading-tight ${isHighContrast ? 'text-yellow-400' : 'text-white'}`}>
-                Nowoczesna opieka <br/> dla całej rodziny
+      <section className={`relative w-full ${isHighContrast ? 'bg-black text-white' : 'bg-surface text-slate-900'}`}>
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-16 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div className="space-y-6">
+              <h1 className={`text-4xl md:text-5xl font-bold leading-tight ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>
+                Przychodnia POZ<br />ul. Mickiewicza 44A
               </h1>
-              <p className={`text-lg md:text-xl max-w-lg ${isHighContrast ? 'text-white' : 'text-gray-100'}`}>
-                Zapewniamy kompleksową podstawową opiekę zdrowotną (POZ) dla pacjentów w każdym wieku. Zaufaj naszemu doświadczonemu zespołowi lekarzy, pielęgniarek, położnej i dietetykowi.
+              <p className={`text-lg max-w-xl ${isHighContrast ? 'text-white' : 'text-slate-600'}`}>
+                Podstawowa opieka zdrowotna dla całej rodziny w Białymstoku. Rejestracja telefoniczna od poniedziałku do piątku.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button 
-                  to="/rejestracja" 
-                  variant={isHighContrast ? 'outline' : 'white'} 
-                  className={`
-                    w-full sm:w-auto 
-                    transform transition-all duration-300 ease-out 
-                    hover:-translate-y-1 hover:scale-105 hover:shadow-[0_10px_40px_-10px_rgba(255,255,255,0.5)] active:scale-95 active:shadow-sm
-                    ${isHighContrast 
-                      ? 'bg-black border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black' 
-                      : 'bg-white text-brand-600 hover:bg-white shadow-xl font-bold'
-                    }
-                  `}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <a
+                  href="tel:857482312"
+                  className={`inline-flex items-center justify-center gap-3 rounded-lg px-6 py-4 text-xl font-bold shadow-sm ${isHighContrast ? 'bg-black border-2 border-yellow-400 text-yellow-400' : 'bg-brand-600 text-white hover:bg-brand-700'}`}
                 >
-                  Zostań pacjentem
-                </Button>
-                
-                <Button 
-                  to="#o-nas" 
-                  variant="outline" 
-                  className={`
-                    w-full sm:w-auto border-2 
-                    transform transition-all duration-300 ease-out
-                    hover:scale-105 hover:bg-white/10 active:scale-95
-                    ${isHighContrast ? 'border-white text-white' : 'border-white text-white'}
-                  `}
+                  <Phone size={22} /> 85 748 23 12
+                </a>
+                <Button
+                  to="/rejestracja"
+                  variant="outline"
+                  className={`w-full sm:w-auto ${isHighContrast ? 'border-white text-white hover:bg-white hover:text-black' : ''}`}
                 >
-                  Poznaj nas
+                  Jak się zarejestrować
                 </Button>
               </div>
             </div>
 
             <div className="flex justify-start lg:justify-end">
-              <div className={`rounded-xl p-6 shadow-xl w-full max-w-sm ${isHighContrast ? 'bg-black border-2 border-yellow-400 text-white' : 'bg-white/95 backdrop-blur-md text-gray-800'}`}>
+              <div className={`rounded-2xl p-6 w-full max-w-sm border ${isHighContrast ? 'bg-black border-yellow-400 text-white' : 'bg-white border-slate-200 text-slate-800 shadow-sm'}`}>
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`p-2 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-50 text-brand-600'}`}>
                     <Clock size={20} />
@@ -155,23 +156,30 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SERVICES */}
-      <section id="uslugi" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white' : 'bg-gray-50'}`}>
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Nasze Usługi</h2>
-            <p className={`max-w-2xl mx-auto ${isHighContrast ? 'text-white' : 'text-gray-600'}`}>
-              Świadczymy szeroki zakres usług medycznych w ramach Podstawowej Opieki Zdrowotnej.
+      <section id="uslugi" className={`py-16 md:py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white' : 'bg-surface'}`}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Z czym można się zgłosić</h2>
+            <p className={isHighContrast ? 'text-white' : 'text-slate-600'}>
+              Najczęstsze sprawy pacjentów przychodni.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, idx) => (
-              <div key={idx} className={`p-6 rounded-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full ${isHighContrast ? 'bg-black border border-white hover:border-yellow-400' : 'bg-white shadow-md hover:shadow-lg border border-transparent hover:border-brand-100'}`}>
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 ${isHighContrast ? 'bg-white text-black' : 'bg-brand-50 text-brand-500'}`}>
+          <div className={`rounded-2xl border divide-y ${isHighContrast ? 'bg-black border-white divide-white/20' : 'bg-white border-slate-200 divide-slate-100'}`}>
+            {services.map((service) => (
+              <div key={service.title} className="flex gap-4 p-5 md:p-6">
+                <div className={`mt-0.5 shrink-0 ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`}>
                   {service.icon}
                 </div>
-                <h3 className={`text-xl font-bold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-brand-500'}`}>{service.title}</h3>
-                <p className={`text-base leading-relaxed ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>{service.desc}</p>
+                <div>
+                  <h3 className={`text-lg font-bold ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>{service.title}</h3>
+                  <p className={`mt-1 leading-relaxed ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>{service.desc}</p>
+                  {service.to && service.linkLabel && (
+                    <Link to={service.to} className={`inline-block mt-2 font-semibold hover:underline ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`}>
+                      {service.linkLabel}
+                    </Link>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -188,50 +196,57 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
-          <div className="md:hidden text-center mb-8">
-            {!isTeamExpanded && (
-               <Button 
-                 onClick={() => setIsTeamExpanded(true)} 
-                 variant={isHighContrast ? 'outline' : 'outline'}
-                 className={isHighContrast ? 'text-yellow-400 border-yellow-400' : ''}
-               >
-                 Poznaj nasz zespół
-               </Button>
-            )}
+          <div className="space-y-10">
+            {teamGroups.map((group) => {
+              const people = group.people.map((person) => ({ ...person, index: personIndex++ }));
+              const groupVisibleOnMobile = people.some((person) => person.index < 3 || isTeamExpanded);
+              return (
+                <div key={group.title} className={groupVisibleOnMobile ? '' : 'hidden md:block'}>
+                  <h3 className={`text-sm font-bold uppercase tracking-wider mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-slate-500'}`}>
+                    {group.title}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {people.map((person) => (
+                      <article
+                        key={person.name}
+                        className={`flex items-center gap-4 p-5 rounded-xl border ${person.index >= 3 && !isTeamExpanded ? 'hidden md:flex' : 'flex'} ${isHighContrast ? 'bg-gray-900 border-white' : 'bg-white border-slate-200'}`}
+                      >
+                        <div
+                          className={`w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold shrink-0 ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-600 text-white'}`}
+                          aria-hidden="true"
+                        >
+                          {person.initials}
+                        </div>
+                        <div>
+                          <h4 className={`text-lg font-bold leading-tight ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>
+                            {person.name}
+                          </h4>
+                          <p className={`text-sm mt-1 ${isHighContrast ? 'text-gray-300' : 'text-slate-500'}`}>
+                            {person.role}
+                          </p>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          <div className={`
-            grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 
-            transition-all duration-700 ease-in-out overflow-hidden
-            ${isTeamExpanded ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}
-          `}>
-            {team.map((person, idx) => (
-              <article 
-                key={idx} 
-                className={`flex items-center gap-4 p-6 rounded-xl transition-all duration-200 ${isHighContrast ? 'bg-gray-900 border border-white hover:border-yellow-400' : 'bg-white shadow-sm border border-gray-100 hover:shadow-md'}`}
-              >
-                <div 
-                  className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold shrink-0 ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-500 text-white'}`} 
-                  aria-hidden="true"
-                >
-                  {person.initials}
-                </div>
-                <div>
-                  <h4 className={`text-lg font-bold leading-tight ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>
-                    {person.name}
-                  </h4>
-                  <p className={`text-sm mt-1 ${isHighContrast ? 'text-gray-300' : 'text-gray-500'}`}>
-                    {person.role}
-                  </p>
-                </div>
-              </article>
-            ))}
+          <div className="md:hidden text-center mt-8">
+            <Button
+              onClick={() => setIsTeamExpanded((open) => !open)}
+              variant="outline"
+              className={isHighContrast ? 'text-yellow-400 border-yellow-400' : ''}
+            >
+              {isTeamExpanded ? 'Zwiń zespół' : 'Pokaż cały zespół'}
+            </Button>
           </div>
         </div>
       </section>
 
       {/* CONTACT & MAP */}
-      <section id="kontakt" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white border-t border-yellow-400' : 'bg-gray-50'}`}>
+      <section id="kontakt" className={`py-16 md:py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white border-t border-yellow-400' : 'bg-surface'}`}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-8">
