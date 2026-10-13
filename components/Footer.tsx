@@ -4,8 +4,7 @@ import { useAccessibility } from '../contexts/AccessibilityContext';
 
 export const Footer: React.FC = () => {
   const { isHighContrast } = useAccessibility();
-  // FORCE YEAR 2025
-  const currentYear = 2025;
+  const currentYear = new Date().getFullYear();
 
   const linkClass = isHighContrast 
     ? "text-yellow-400 hover:text-white hover:underline" 
