@@ -77,12 +77,21 @@ export const Home: React.FC = () => {
       <section className={`relative w-full ${isHighContrast ? 'bg-black text-white' : 'bg-surface text-slate-900'}`}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-16 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <div className="space-y-6">
-              <h1 className={`text-4xl md:text-5xl font-bold leading-tight ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>
-                Przychodnia POZ<br />ul. Mickiewicza 44A
-              </h1>
-              <p className={`text-lg max-w-xl ${isHighContrast ? 'text-white' : 'text-slate-600'}`}>
-                Podstawowa opieka zdrowotna dla całej rodziny w Białymstoku. Rejestracja telefoniczna od poniedziałku do piątku.
+            <div className="space-y-5 max-w-xl">
+              <p className={`text-sm font-semibold tracking-wide ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`}>
+                NZOZ Iwona Okuła · Białystok
+              </p>
+              <div className="space-y-2">
+                <h1 className={`text-3xl md:text-4xl font-semibold tracking-tight ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>
+                  Przychodnia POZ
+                </h1>
+                <p className={`flex items-center gap-2 text-base md:text-lg ${isHighContrast ? 'text-white' : 'text-slate-600'}`}>
+                  <MapPin size={18} className={`shrink-0 ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`} aria-hidden="true" />
+                  ul. Mickiewicza 44A
+                </p>
+              </div>
+              <p className={`text-base md:text-lg leading-relaxed ${isHighContrast ? 'text-white' : 'text-slate-600'}`}>
+                Podstawowa opieka zdrowotna dla całej rodziny. Rejestracja telefoniczna od poniedziałku do piątku.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <a
