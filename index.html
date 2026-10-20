@@ -17,7 +17,6 @@
     <meta name="twitter:title" content="NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła | Białystok" />
     <meta name="twitter:description" content="NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku. Opieka POZ dla całej rodziny, ul. Mickiewicza 44A. Rejestracja: 85 748 23 12." />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M38 12C38 8.68629 40.6863 6 44 6H56C59.3137 6 62 8.68629 62 12V38H88C91.3137 38 94 40.6863 94 44V56C94 59.3137 91.3137 62 88 62H62V88C62 91.3137 59.3137 94 56 94H44C40.6863 94 38 91.3137 38 88V62H12C8.68629 62 6 59.3137 6 56V44C6 40.6863 8.68629 38 12 38H38V12Z' fill='%2306b6d4'/%3E%3C/svg%3E" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -34,7 +33,28 @@
       }
     </script>
     <style>
-      body { font-family: 'Inter', sans-serif; background: #f3f6f6; }
+      @font-face {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/inter-latin-400.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url('/fonts/inter-latin-600.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/inter-latin-700.woff2') format('woff2');
+      }
+      body { font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #f3f6f6; }
       html { scroll-behavior: smooth; }
     </style>
   <script type="importmap">

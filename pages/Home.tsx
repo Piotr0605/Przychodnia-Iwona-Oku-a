@@ -319,19 +319,19 @@ export const Home: React.FC = () => {
                       {cookieConsent === 'rejected' ? <Lock size={32} /> : <MapIcon size={32} />}
                    </div>
                    <h3 className={`text-xl font-bold mb-2 ${isHighContrast ? 'text-white' : 'text-gray-900'}`}>
-                     {cookieConsent === 'rejected' ? 'Mapa zablokowana' : 'Mapa wymaga zgody na cookies'}
+                     {cookieConsent === 'rejected' ? 'Mapa jest wyłączona' : 'Mapa wymaga zgody'}
                    </h3>
                    <p className={`mb-6 max-w-sm ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>
                      {cookieConsent === 'rejected' 
-                       ? 'Zablokowałeś pliki cookie, dlatego nie możemy wyświetlić mapy Google. Zmień ustawienia, aby zobaczyć mapę.' 
-                       : 'Aby zobaczyć mapę dojazdu Google Maps, musisz zaakceptować pliki cookies związane z usługami Google.'}
+                       ? 'Nie wyrażono zgody na mapę Google, więc nie jest ładowana. Zgodę można wyrazić poniżej.' 
+                       : 'Mapa Google ładuje się dopiero po zgodzie. Bez niej strona działa dalej, a Google nie dostaje adresu IP z tej mapy.'}
                    </p>
                    <Button 
                      onClick={acceptCookies}
                      variant={isHighContrast ? 'primary' : 'primary'}
                      className={isHighContrast ? 'bg-yellow-400 text-black hover:bg-yellow-500' : ''}
                    >
-                     Zaakceptuj cookies i pokaż mapę
+                     Zgoda na mapę Google
                    </Button>
                 </div>
               )}

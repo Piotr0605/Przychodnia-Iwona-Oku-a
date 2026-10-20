@@ -68,7 +68,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   // Standard button
   return (
-    <button onClick={onClick} className={combinedClassName}>
+    <button type="button" onClick={onClick} className={combinedClassName}>
       {children}
     </button>
   );
