@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, MapPin, Stethoscope, Phone, Map as MapIcon, Lock, FileText, ClipboardList, Syringe, Wallet } from 'lucide-react';
+import { Clock, MapPin, Stethoscope, Phone, Map as MapIcon, Lock, FileText, ClipboardList, Syringe, Wallet, Users, ShieldCheck, HeartPulse } from 'lucide-react';
 import { Button } from '../components/Button';
 import { useAccessibility } from '../contexts/AccessibilityContext';
 import { useCookie } from '../contexts/CookieContext';
@@ -75,8 +75,8 @@ export const Home: React.FC = () => {
   return (
     <div className="flex flex-col w-full">
       <section className={`relative w-full ${isHighContrast ? 'bg-black text-white' : 'bg-surface text-slate-900'}`}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-14 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_17.5rem] gap-8 lg:gap-12 items-start">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-14 pb-12 lg:pb-16 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(23rem,24.5rem)] gap-8 lg:gap-12 items-start">
             <div className="space-y-5 max-w-xl">
               <p className={`text-sm font-semibold tracking-wide ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`}>
                 NZOZ Iwona Okuła · Białystok
@@ -96,81 +96,87 @@ export const Home: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <a
                   href="tel:857482312"
-                  className={`inline-flex items-center justify-center gap-3 rounded-lg px-6 py-4 text-xl font-bold shadow-sm ${isHighContrast ? 'bg-black border-2 border-yellow-400 text-yellow-400' : 'bg-brand-600 text-white hover:bg-brand-700'}`}
+                  className={`inline-flex w-full sm:w-auto items-center justify-center gap-3 whitespace-nowrap rounded-lg px-6 py-4 text-xl font-bold shadow-sm ${isHighContrast ? 'bg-black border-2 border-yellow-400 text-yellow-400' : 'bg-brand-600 text-white hover:bg-brand-700'}`}
                 >
                   <Phone size={22} /> 85 748 23 12
                 </a>
                 <Button
                   to="/rejestracja"
                   variant="outline"
-                  className={`w-full sm:w-auto ${isHighContrast ? 'border-white text-white hover:bg-white hover:text-black' : ''}`}
+                  className={`w-full sm:w-auto whitespace-nowrap ${isHighContrast ? 'border-white text-white hover:bg-white hover:text-black' : ''}`}
                 >
                   Jak się zarejestrować
                 </Button>
               </div>
             </div>
 
-            <div>
-              <div className={`rounded-2xl p-6 w-full border ${isHighContrast ? 'bg-black border-yellow-400 text-white' : 'bg-white border-slate-200 text-slate-800 shadow-sm'}`}>
-                <div className="flex items-center gap-3 mb-4">
+            <aside className="w-full sm:max-w-md lg:max-w-none">
+              <div className={`rounded-2xl p-5 sm:p-6 w-full border ${isHighContrast ? 'bg-black border-yellow-400 text-white' : 'bg-white border-slate-200 text-slate-800 shadow-sm'}`}>
+                <div className="flex items-center gap-3 mb-5">
                   <div className={`p-2 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-50 text-brand-700'}`}>
-                    <Clock size={20} />
+                    <Clock size={20} aria-hidden="true" />
                   </div>
                   <h2 className="text-lg font-semibold">Godziny przyjęć</h2>
                 </div>
-                
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between items-end gap-4">
-                    <span className={isHighContrast ? 'text-gray-300' : 'text-slate-600'}>Poniedziałek–piątek</span>
-                    <span className={`text-lg font-semibold leading-none ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>8:00–18:00</span>
-                  </div>
-                  <div className="flex justify-between items-end gap-4">
-                    <span className={isHighContrast ? 'text-gray-300' : 'text-slate-600'}>Sobota–niedziela</span>
-                    <span className={`font-semibold ${isHighContrast ? 'text-gray-500' : 'text-slate-400'}`}>Nieczynne</span>
-                  </div>
-                </div>
 
-                <p className={`mt-5 pt-4 border-t text-sm leading-relaxed ${isHighContrast ? 'border-gray-800' : 'border-slate-100'}`}>
+                <dl className="text-sm">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <dt className={`whitespace-nowrap ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>Poniedziałek–piątek</dt>
+                    <dd className={`whitespace-nowrap text-lg font-semibold tabular-nums leading-none ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>8:00–18:00</dd>
+                  </div>
+                  <div className={`mt-3 pt-3 border-t flex items-baseline justify-between gap-4 ${isHighContrast ? 'border-gray-800' : 'border-slate-100'}`}>
+                    <dt className={`whitespace-nowrap ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>Sobota–niedziela</dt>
+                    <dd className={`whitespace-nowrap font-semibold ${isHighContrast ? 'text-gray-500' : 'text-slate-400'}`}>Nieczynne</dd>
+                  </div>
+                </dl>
+
+                <p className={`mt-4 pt-4 border-t text-sm leading-relaxed ${isHighContrast ? 'border-gray-800' : 'border-slate-100'}`}>
                   <Link to="/gdzie-po-pomoc" className={`font-medium hover:underline ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`}>
-                    Po 18:00 i w weekend — gdzie po pomoc
+                    <span className="whitespace-nowrap">Po 18:00 i w weekend</span>
+                    <span className="whitespace-nowrap"> — gdzie po pomoc</span>
                   </Link>
                 </p>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
 
       {/* ABOUT US */}
-      <section id="o-nas" className={`py-12 sm:py-16 lg:py-20 scroll-mt-28 ${isHighContrast ? 'bg-black text-white' : 'bg-white'}`}>
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-             <div className="max-w-4xl mx-auto">
-                <h2 className={`text-2xl md:text-3xl font-semibold mb-6 text-center ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>O nas</h2>
-                <div className={`space-y-4 text-base md:text-lg leading-relaxed ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>
-                  <p>
-                    NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła od wielu lat otacza opieką całe rodziny, od najmłodszych po seniorów.
-                  </p>
-                  <p>
-                    Współpracujemy z Narodowym Funduszem Zdrowia w ramach podstawowej opieki zdrowotnej, profilaktyki i szczepień.
-                  </p>
-                </div>
-                <ul className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {[
-                    'Opieka dla całej rodziny',
-                    'Wizyty w ramach NFZ',
-                    'Lekarze, pielęgniarki, położna i dietetyk',
-                  ].map((fact) => (
-                    <li key={fact} className={`rounded-xl border px-4 py-3 text-sm font-medium leading-snug ${isHighContrast ? 'border-yellow-400 text-yellow-400' : 'border-slate-200 bg-surface text-slate-800'}`}>
-                      {fact}
-                    </li>
-                  ))}
-                </ul>
-             </div>
+      <section id="o-nas" className={`py-14 sm:py-16 lg:py-20 scroll-mt-4 ${isHighContrast ? 'bg-black text-white' : 'bg-white'}`}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,27rem)] gap-8 lg:gap-14 items-start">
+            <div className="max-w-2xl">
+              <h2 className={`text-2xl md:text-3xl font-semibold ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>O nas</h2>
+              <div className={`mt-4 space-y-4 text-base md:text-lg leading-relaxed ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>
+                <p>
+                  NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła od wielu lat otacza opieką całe rodziny, od najmłodszych po seniorów.
+                </p>
+                <p>
+                  Współpracujemy z Narodowym Funduszem Zdrowia w ramach podstawowej opieki zdrowotnej, profilaktyki i szczepień.
+                </p>
+              </div>
+            </div>
+            <ul className={`w-full max-w-xl lg:max-w-none rounded-2xl border divide-y ${isHighContrast ? 'border-yellow-400 divide-yellow-400 bg-black' : 'border-slate-200 divide-slate-200 bg-surface'}`}>
+              {[
+                { label: 'Opieka dla całej rodziny', icon: <Users size={20} aria-hidden="true" /> },
+                { label: 'Wizyty w ramach NFZ', icon: <ShieldCheck size={20} aria-hidden="true" /> },
+                { label: 'Lekarze, pielęgniarki, położna i dietetyk', icon: <HeartPulse size={20} aria-hidden="true" /> },
+              ].map((fact) => (
+                <li key={fact.label} className="flex items-center gap-4 px-4 py-4 min-h-[4.75rem]">
+                  <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border ${isHighContrast ? 'border-yellow-400 bg-yellow-400 text-black' : 'border-slate-200 bg-white text-brand-700'}`}>
+                    {fact.icon}
+                  </span>
+                  <span className={`text-[15px] font-medium leading-snug ${isHighContrast ? 'text-yellow-400' : 'text-slate-800'}`}>{fact.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="uslugi" className={`py-16 md:py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white' : 'bg-surface'}`}>
+      <section id="uslugi" className={`py-16 md:py-20 scroll-mt-4 ${isHighContrast ? 'bg-gray-900 text-white' : 'bg-surface'}`}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <h2 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Z czym można się zgłosić</h2>
@@ -201,7 +207,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* TEAM */}
-      <section id="zespol" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-black text-white border-t border-yellow-400' : 'bg-white'}`}>
+      <section id="zespol" className={`py-20 scroll-mt-4 ${isHighContrast ? 'bg-black text-white border-t border-yellow-400' : 'bg-white'}`}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Nasz zespół</h2>
@@ -260,7 +266,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* CONTACT & MAP */}
-      <section id="kontakt" className={`py-16 md:py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white border-t border-yellow-400' : 'bg-surface'}`}>
+      <section id="kontakt" className={`py-16 md:py-20 scroll-mt-4 ${isHighContrast ? 'bg-gray-900 text-white border-t border-yellow-400' : 'bg-surface'}`}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-8">

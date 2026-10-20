@@ -8,13 +8,14 @@ export const Registration: React.FC = () => {
   const body = isHighContrast ? 'text-gray-300' : 'text-slate-600';
 
   return (
-    <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
+    <div className={`py-10 md:py-14 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <header className="mb-8">
             <h1 className={`text-2xl md:text-3xl font-semibold mb-3 ${heading}`}>Rejestracja pacjentów</h1>
-            <p className={`text-base md:text-lg ${body}`}>
-              Wizytę umówisz telefonicznie albo na miejscu, od poniedziałku do piątku w godzinach 8:00–18:00.
+            <p className={`text-base md:text-lg leading-relaxed ${body}`}>
+              Wizytę umówisz telefonicznie albo na miejscu, od poniedziałku do piątku{' '}
+              <span className="whitespace-nowrap">w godzinach 8:00–18:00</span>.
             </p>
           </header>
 

@@ -35,7 +35,7 @@ export const Header: React.FC = () => {
       }
     } else {
       navigate(path);
-      window.scrollTo(0, 0);
+      document.getElementById('page-scroll')?.scrollTo(0, 0);
     }
   };
 
@@ -73,8 +73,8 @@ export const Header: React.FC = () => {
   };
 
   const wrapperClass = isHighContrast
-    ? 'fixed top-0 left-0 w-full z-50 bg-black border-b-2 border-yellow-400'
-    : 'fixed top-0 left-0 w-full z-50 bg-white border-b border-slate-200';
+    ? 'relative z-50 w-full shrink-0 bg-black border-b-2 border-yellow-400'
+    : 'relative z-50 w-full shrink-0 bg-white border-b border-slate-200';
 
   const topBarClass = isHighContrast
     ? 'bg-yellow-400 text-black'
