@@ -9,7 +9,7 @@ export const Registration: React.FC = () => {
 
   return (
     <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl px-4 sm:px-6 lg:px-8">
         <header className="mb-8">
           <h1 className={`text-2xl md:text-3xl font-semibold mb-3 ${heading}`}>Rejestracja pacjentów</h1>
           <p className={`text-base md:text-lg ${body}`}>
