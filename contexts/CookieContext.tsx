@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type ConsentStatus = 'accepted' | 'rejected' | null;
 
@@ -11,13 +11,18 @@ interface CookieContextType {
 
 const CookieContext = createContext<CookieContextType | undefined>(undefined);
 
-export const CookieProvider = ({ children }: { children: ReactNode }) => {
-  const [cookieConsent, setCookieConsent] = useState<ConsentStatus>(null);
+function readStoredConsent(): ConsentStatus {
+  try {
+    const saved = localStorage.getItem('cookie_consent');
+    if (saved === 'accepted' || saved === 'rejected') return saved;
+  } catch {
+    return null;
+  }
+  return null;
+}
 
-  useEffect(() => {
-    const savedConsent = localStorage.getItem('cookie_consent') as ConsentStatus;
-    setCookieConsent(savedConsent);
-  }, []);
+export const CookieProvider = ({ children }: { children: ReactNode }) => {
+  const [cookieConsent, setCookieConsent] = useState<ConsentStatus>(readStoredConsent);
 
   const acceptCookies = () => {
     setCookieConsent('accepted');

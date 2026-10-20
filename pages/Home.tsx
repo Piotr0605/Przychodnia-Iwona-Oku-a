@@ -75,8 +75,8 @@ export const Home: React.FC = () => {
   return (
     <div className="flex flex-col w-full">
       <section className={`relative w-full ${isHighContrast ? 'bg-black text-white' : 'bg-surface text-slate-900'}`}>
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40 pb-16 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 md:pt-36 pb-14 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_17.5rem] gap-8 lg:gap-12 items-start">
             <div className="space-y-5 max-w-xl">
               <p className={`text-sm font-semibold tracking-wide ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`}>
                 NZOZ Iwona Okuła · Białystok
@@ -110,34 +110,31 @@ export const Home: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex justify-start lg:justify-end">
-              <div className={`rounded-2xl p-6 w-full max-w-sm border ${isHighContrast ? 'bg-black border-yellow-400 text-white' : 'bg-white border-slate-200 text-slate-800 shadow-sm'}`}>
+            <div>
+              <div className={`rounded-2xl p-6 w-full border ${isHighContrast ? 'bg-black border-yellow-400 text-white' : 'bg-white border-slate-200 text-slate-800 shadow-sm'}`}>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`p-2 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-50 text-brand-600'}`}>
+                  <div className={`p-2 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-50 text-brand-700'}`}>
                     <Clock size={20} />
                   </div>
-                  <h3 className="text-lg font-bold">Godziny przyjęć</h3>
+                  <h2 className="text-lg font-semibold">Godziny przyjęć</h2>
                 </div>
                 
                 <div className="space-y-3 text-sm">
-                  <div className="flex justify-between items-end">
-                    <span className={isHighContrast ? 'text-gray-300' : 'text-gray-600'}>Pon. - Piątek</span>
-                    <span className={`text-lg font-bold leading-none ${isHighContrast ? 'text-yellow-400' : 'text-brand-600'}`}>08:00 – 18:00</span>
+                  <div className="flex justify-between items-end gap-4">
+                    <span className={isHighContrast ? 'text-gray-300' : 'text-slate-600'}>Poniedziałek–piątek</span>
+                    <span className={`text-lg font-semibold leading-none ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>8:00–18:00</span>
                   </div>
-                  <div className="flex justify-between items-end">
-                    <span className={isHighContrast ? 'text-gray-300' : 'text-gray-600'}>Sobota - Niedziela</span>
-                    <span className={`font-semibold ${isHighContrast ? 'text-gray-500' : 'text-gray-400'}`}>Nieczynne</span>
+                  <div className="flex justify-between items-end gap-4">
+                    <span className={isHighContrast ? 'text-gray-300' : 'text-slate-600'}>Sobota–niedziela</span>
+                    <span className={`font-semibold ${isHighContrast ? 'text-gray-500' : 'text-slate-400'}`}>Nieczynne</span>
                   </div>
                 </div>
 
-                <div className={`mt-5 pt-4 border-t ${isHighContrast ? 'border-gray-800' : 'border-gray-100'}`}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-wider opacity-70">Rejestracja</span>
-                    <a href="tel:857482312" className={`text-xl font-bold hover:underline ${isHighContrast ? 'text-yellow-400' : 'text-brand-600'}`}>
-                      85 748 23 12
-                    </a>
-                  </div>
-                </div>
+                <p className={`mt-5 pt-4 border-t text-sm leading-relaxed ${isHighContrast ? 'border-gray-800' : 'border-slate-100'}`}>
+                  <Link to="/gdzie-po-pomoc" className={`font-medium hover:underline ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`}>
+                    Po 18:00 i w weekend — gdzie po pomoc
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
@@ -148,18 +145,26 @@ export const Home: React.FC = () => {
       <section id="o-nas" className={`py-12 sm:py-16 lg:py-20 scroll-mt-28 ${isHighContrast ? 'bg-black text-white' : 'bg-white'}`}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
              <div className="max-w-4xl mx-auto">
-                <h2 className={`text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>O nas</h2>
-                <div className={`space-y-4 md:space-y-6 text-lg leading-relaxed text-left ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>
+                <h2 className={`text-2xl md:text-3xl font-semibold mb-6 text-center ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>O nas</h2>
+                <div className={`space-y-4 text-base md:text-lg leading-relaxed ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>
                   <p>
-                    NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła to miejsce, w którym zdrowie naszych Pacjentów jest zawsze na pierwszym miejscu. Od wielu lat otaczamy opieką całe rodziny – od najmłodszych po seniorów.
+                    NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła od wielu lat otacza opieką całe rodziny, od najmłodszych po seniorów.
                   </p>
                   <p>
-                    Nasz zespół tworzą doświadczeni lekarze, pielęgniarki, położna oraz dietetyk, którzy codziennie dbają o to, by każda wizyta przebiegała w atmosferze zaufania i zrozumienia. Współpracujemy z Narodowym Funduszem Zdrowia, oferując kompleksową opiekę w ramach Podstawowej Opieki Zdrowotnej (POZ), profilaktykę, szczepienia oraz konsultacje specjalistyczne.
-                  </p>
-                  <p>
-                    Naszym celem jest nie tylko leczenie, ale też edukacja i profilaktyka – by nasi Pacjenci mogli cieszyć się zdrowiem każdego dnia.
+                    Współpracujemy z Narodowym Funduszem Zdrowia w ramach podstawowej opieki zdrowotnej, profilaktyki i szczepień.
                   </p>
                 </div>
+                <ul className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {[
+                    'Opieka dla całej rodziny',
+                    'Wizyty w ramach NFZ',
+                    'Lekarze, pielęgniarki, położna i dietetyk',
+                  ].map((fact) => (
+                    <li key={fact} className={`rounded-xl border px-4 py-3 text-sm font-medium leading-snug ${isHighContrast ? 'border-yellow-400 text-yellow-400' : 'border-slate-200 bg-surface text-slate-800'}`}>
+                      {fact}
+                    </li>
+                  ))}
+                </ul>
              </div>
         </div>
       </section>
@@ -168,7 +173,7 @@ export const Home: React.FC = () => {
       <section id="uslugi" className={`py-16 md:py-20 scroll-mt-28 ${isHighContrast ? 'bg-gray-900 text-white' : 'bg-surface'}`}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Z czym można się zgłosić</h2>
+            <h2 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Z czym można się zgłosić</h2>
             <p className={isHighContrast ? 'text-white' : 'text-slate-600'}>
               Najczęstsze sprawy pacjentów przychodni.
             </p>
@@ -199,7 +204,7 @@ export const Home: React.FC = () => {
       <section id="zespol" className={`py-20 scroll-mt-28 ${isHighContrast ? 'bg-black text-white border-t border-yellow-400' : 'bg-white'}`}>
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Nasz Zespół</h2>
+            <h2 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Nasz zespół</h2>
             <p className={isHighContrast ? 'text-white' : 'text-gray-600'}>
               Doświadczeni specjaliści, którym możesz zaufać.
             </p>
@@ -259,44 +264,37 @@ export const Home: React.FC = () => {
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <div>
-                <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Kontakt</h2>
-                <p className={`text-lg ${isHighContrast ? 'text-white' : 'text-gray-600'}`}>
-                  Jesteśmy dostępni od poniedziałku do piątku. Skontaktuj się z nami telefonicznie lub odwiedź nas osobiście.
-                </p>
-              </div>
+              <h2 className={`text-2xl md:text-3xl font-semibold ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Kontakt</h2>
 
               <div className="space-y-6">
                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-100 text-brand-600'}`}>
+                    <div className={`p-3 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-100 text-brand-700'}`}>
                       <MapPin size={24} />
                     </div>
                     <div>
-                      <h3 className={`text-lg font-bold ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Adres</h3>
-                      <p className={isHighContrast ? 'text-gray-300' : 'text-gray-600'}>ul. Mickiewicza 44A</p>
-                      <p className={isHighContrast ? 'text-gray-300' : 'text-gray-600'}>15-223 Białystok</p>
+                      <h3 className={`text-lg font-semibold ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Adres</h3>
+                      <p className={isHighContrast ? 'text-gray-300' : 'text-slate-600'}>ul. Mickiewicza 44A</p>
+                      <p className={isHighContrast ? 'text-gray-300' : 'text-slate-600'}>15-223 Białystok</p>
                     </div>
                  </div>
                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-100 text-brand-600'}`}>
+                    <div className={`p-3 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-100 text-brand-700'}`}>
                       <Phone size={24} />
                     </div>
                     <div>
-                      <h3 className={`text-lg font-bold ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Telefon</h3>
-                      <p className="text-gray-600">
-                        <a href="tel:857482312" className={`font-bold hover:underline ${isHighContrast ? 'text-white' : 'text-brand-600'}`}>
-                          85 748 23 12
-                        </a>
-                      </p>
+                      <h3 className={`text-lg font-semibold ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Telefon</h3>
+                      <a href="tel:857482312" className={`font-semibold hover:underline ${isHighContrast ? 'text-white' : 'text-brand-700'}`}>
+                        85 748 23 12
+                      </a>
                     </div>
                  </div>
                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-100 text-brand-600'}`}>
-                      <Stethoscope size={24} />
+                    <div className={`p-3 rounded-lg ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-100 text-brand-700'}`}>
+                      <Clock size={24} />
                     </div>
                     <div>
-                      <h3 className={`text-lg font-bold ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Rejestracja</h3>
-                      <p className={isHighContrast ? 'text-gray-300' : 'text-gray-600'}>Zachęcamy do kontaktu telefonicznego w godzinach pracy przychodni oraz do odwiedzenia nas osobiście.</p>
+                      <h3 className={`text-lg font-semibold ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Godziny</h3>
+                      <p className={isHighContrast ? 'text-gray-300' : 'text-slate-600'}>Poniedziałek–piątek, 8:00–18:00</p>
                     </div>
                  </div>
               </div>
@@ -321,19 +319,19 @@ export const Home: React.FC = () => {
                       {cookieConsent === 'rejected' ? <Lock size={32} /> : <MapIcon size={32} />}
                    </div>
                    <h3 className={`text-xl font-bold mb-2 ${isHighContrast ? 'text-white' : 'text-gray-900'}`}>
-                     {cookieConsent === 'rejected' ? 'Mapa zablokowana' : 'Mapa wymaga zgody na cookies'}
+                     {cookieConsent === 'rejected' ? 'Mapa jest wyłączona' : 'Mapa wymaga zgody'}
                    </h3>
                    <p className={`mb-6 max-w-sm ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>
                      {cookieConsent === 'rejected' 
-                       ? 'Zablokowałeś pliki cookie, dlatego nie możemy wyświetlić mapy Google. Zmień ustawienia, aby zobaczyć mapę.' 
-                       : 'Aby zobaczyć mapę dojazdu Google Maps, musisz zaakceptować pliki cookies związane z usługami Google.'}
+                       ? 'Nie wyrażono zgody na mapę Google, więc nie jest ładowana. Zgodę można wyrazić poniżej.' 
+                       : 'Mapa Google ładuje się dopiero po zgodzie. Bez niej strona działa dalej, a Google nie dostaje adresu IP z tej mapy.'}
                    </p>
                    <Button 
                      onClick={acceptCookies}
                      variant={isHighContrast ? 'primary' : 'primary'}
                      className={isHighContrast ? 'bg-yellow-400 text-black hover:bg-yellow-500' : ''}
                    >
-                     Zaakceptuj cookies i pokaż mapę
+                     Zgoda na mapę Google
                    </Button>
                 </div>
               )}

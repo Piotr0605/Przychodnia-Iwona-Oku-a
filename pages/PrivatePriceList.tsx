@@ -17,11 +17,11 @@ export const PrivatePriceList: React.FC = () => {
 
   return (
     // Increased pt-32/pt-40 to pt-36/pt-48 to clear the header
-    <div className={`min-h-screen py-16 pt-36 md:pt-48 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
+    <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <header className="mb-12 text-center">
-          <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Cennik Usług Prywatnych</h1>
+          <h1 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Cennik usług prywatnych</h1>
           <p className={`text-lg ${isHighContrast ? 'text-white' : 'text-gray-600'}`}>
             Usługi świadczone komercyjnie poza kontraktem z NFZ.
           </p>
