@@ -32,10 +32,10 @@ export const VaccinationPriceList: React.FC = () => {
                 <thead className={`${isHighContrast ? 'bg-gray-800 text-yellow-400' : 'bg-green-50 text-green-800'}`}>
                     <tr>
                         <th className="p-4 md:p-6 font-bold">Nazwa szczepionki</th>
-                        <th className="p-4 md:p-6 font-bold text-right">
-                          <span className="sm:hidden">
+                        <th className="p-4 md:p-6 font-bold text-right align-bottom">
+                          <span className="inline-block whitespace-nowrap text-right leading-tight sm:hidden">
                             <span className="block">Cena</span>
-                            <span className="block text-xs font-semibold">z kwalifikacją</span>
+                            <span className="block text-[11px] font-semibold">z kwalifikacją</span>
                           </span>
                           <span className="hidden sm:inline whitespace-nowrap">Cena (z kwalifikacją)</span>
                         </th>

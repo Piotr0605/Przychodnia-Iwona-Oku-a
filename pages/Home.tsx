@@ -145,7 +145,7 @@ export const Home: React.FC = () => {
       {/* ABOUT US */}
       <section id="o-nas" className={`py-14 sm:py-16 lg:py-20 scroll-mt-4 ${isHighContrast ? 'bg-black text-white' : 'bg-white'}`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,24rem)] gap-8 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,27rem)] gap-8 lg:gap-14 items-start">
             <div className="max-w-2xl">
               <h2 className={`text-2xl md:text-3xl font-semibold ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>O nas</h2>
               <div className={`mt-4 space-y-4 text-base md:text-lg leading-relaxed ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>
@@ -167,7 +167,7 @@ export const Home: React.FC = () => {
                   <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border ${isHighContrast ? 'border-yellow-400 bg-yellow-400 text-black' : 'border-slate-200 bg-white text-brand-700'}`}>
                     {fact.icon}
                   </span>
-                  <span className={`font-medium leading-snug ${isHighContrast ? 'text-yellow-400' : 'text-slate-800'}`}>{fact.label}</span>
+                  <span className={`text-[15px] font-medium leading-snug ${isHighContrast ? 'text-yellow-400' : 'text-slate-800'}`}>{fact.label}</span>
                 </li>
               ))}
             </ul>
