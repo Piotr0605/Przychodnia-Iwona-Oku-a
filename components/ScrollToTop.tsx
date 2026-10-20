@@ -13,12 +13,11 @@ export default function ScrollToTop() {
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 100);
     } else {
-      // Default behavior: scroll to top on route change
-      window.scrollTo(0, 0);
+      document.getElementById('page-scroll')?.scrollTo(0, 0);
     }
   }, [pathname, state]);
 

@@ -10,7 +10,7 @@ export const Privacy: React.FC = () => {
   const body = isHighContrast ? 'text-gray-300' : 'text-slate-700';
 
   return (
-    <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
+    <div className={`py-10 md:py-14 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <article className={`p-6 md:p-8 rounded-2xl shadow-sm max-w-4xl mx-auto ${isHighContrast ? 'bg-gray-900 border border-yellow-400' : 'bg-white'}`}>
           <h1 className={`text-2xl md:text-3xl font-semibold mb-4 ${heading}`}>Polityka prywatności i klauzula RODO</h1>

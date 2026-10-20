@@ -16,13 +16,15 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
   const fontSizeClass = isBigFont ? 'text-xl' : 'text-base';
 
   return (
-    <div className={`flex flex-col min-h-screen ${fontSizeClass}`}>
+    <div className={`flex h-dvh flex-col overflow-hidden ${fontSizeClass}`}>
       <DocumentMeta />
       <Header />
-      <main className="flex-grow">
-        {children}
-      </main>
-      <Footer />
+      <div id="page-scroll" className="flex min-h-0 flex-1 flex-col overflow-y-auto">
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+      </div>
       <CookieBanner />
     </div>
   );

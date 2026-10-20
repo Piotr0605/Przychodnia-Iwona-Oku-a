@@ -17,10 +17,10 @@ export const VaccinationPriceList: React.FC = () => {
 
   return (
     // Increased pt-32/pt-40 to pt-36/pt-48 to clear the header
-    <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
+    <div className={`py-10 md:py-14 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <header className="mb-12 text-center">
+        <header className="mb-8 md:mb-10 text-center">
           <h1 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Cennik szczepień</h1>
           <p className={`text-lg ${isHighContrast ? 'text-white' : 'text-gray-600'}`}>
             Szczepienia zalecane i dodatkowe (odpłatne).
@@ -32,7 +32,13 @@ export const VaccinationPriceList: React.FC = () => {
                 <thead className={`${isHighContrast ? 'bg-gray-800 text-yellow-400' : 'bg-green-50 text-green-800'}`}>
                     <tr>
                         <th className="p-4 md:p-6 font-bold">Nazwa szczepionki</th>
-                        <th className="p-4 md:p-6 font-bold text-right">Cena (z kwalifikacją)</th>
+                        <th className="p-4 md:p-6 font-bold text-right">
+                          <span className="sm:hidden">
+                            <span className="block">Cena</span>
+                            <span className="block text-xs font-semibold">z kwalifikacją</span>
+                          </span>
+                          <span className="hidden sm:inline whitespace-nowrap">Cena (z kwalifikacją)</span>
+                        </th>
                     </tr>
                 </thead>
                 <tbody className={`divide-y ${isHighContrast ? 'divide-gray-700' : 'divide-gray-100'}`}>
