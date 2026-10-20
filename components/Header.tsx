@@ -56,13 +56,29 @@ export const Header: React.FC = () => {
     { name: 'Kalendarz szczepień', path: 'https://szczepienia.pzh.gov.pl/kalendarz-szczepien-2024/', external: true },
   ];
 
+  const isCurrentPath = (path: string) => !path.startsWith('/#') && location.pathname === path;
+  const pricesActive = priceLinks.some((link) => link.path === location.pathname);
+  const desktopItemClass = (path: string) => {
+    if (!isCurrentPath(path)) return navLinkClass;
+    return isHighContrast
+      ? `${navLinkClass} text-yellow-400 underline decoration-2 underline-offset-4`
+      : `${navLinkClass} text-brand-700 underline decoration-2 underline-offset-4 decoration-brand-600`;
+  };
+  const mobileItemClass = (path: string, nested = false) => {
+    const current = isCurrentPath(path);
+    if (isHighContrast) {
+      return `${nested ? 'text-base' : 'text-lg'} font-medium px-4 py-3 rounded-xl ${current ? 'text-yellow-400 underline' : 'text-white hover:bg-gray-900 hover:text-yellow-400'}`;
+    }
+    return `${nested ? 'text-base' : 'text-lg'} font-medium px-4 ${nested ? 'py-2.5' : 'py-3'} rounded-xl ${current ? 'bg-brand-50 text-brand-700' : 'text-slate-800 hover:bg-slate-50 hover:text-brand-700'}`;
+  };
+
   const wrapperClass = isHighContrast
     ? 'fixed top-0 left-0 w-full z-50 bg-black border-b-2 border-yellow-400'
     : 'fixed top-0 left-0 w-full z-50 bg-white border-b border-slate-200';
 
   const topBarClass = isHighContrast
     ? 'bg-yellow-400 text-black'
-    : 'bg-slate-800 text-slate-100';
+    : 'bg-slate-50 text-slate-600 border-b border-slate-200';
 
   const navLinkClass = isHighContrast
     ? 'text-white hover:text-yellow-400 font-bold cursor-pointer inline-flex items-center justify-center h-10 px-3 rounded-lg transition-colors'
@@ -105,7 +121,7 @@ export const Header: React.FC = () => {
 
               <nav className="hidden xl:flex items-center gap-1">
                 {navLinks.slice(0, 3).map((link) => (
-                  <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={navLinkClass}>
+                  <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={desktopItemClass(link.path)} aria-current={isCurrentPath(link.path) ? 'page' : undefined}>
                     {link.name}
                   </a>
                 ))}
@@ -116,7 +132,7 @@ export const Header: React.FC = () => {
                   onMouseLeave={() => setIsPriceMenuOpen(false)}
                 >
                   <button
-                    className={`${navLinkClass} gap-1`}
+                    className={`${pricesActive ? desktopItemClass(priceLinks.find((link) => link.path === location.pathname)?.path ?? '') : navLinkClass} gap-1`}
                     aria-expanded={isPriceMenuOpen}
                     onClick={() => setIsPriceMenuOpen((open) => !open)}
                   >
@@ -130,7 +146,7 @@ export const Header: React.FC = () => {
                             key={link.name}
                             href={link.path}
                             onClick={(e) => handleNavClick(e, link.path)}
-                            className={`block px-4 py-2.5 text-sm font-medium transition-colors ${isHighContrast ? 'text-white hover:bg-gray-900 hover:text-yellow-400' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-700'}`}
+                            className={`block px-4 py-2.5 text-sm font-medium transition-colors ${isCurrentPath(link.path) ? (isHighContrast ? 'text-yellow-400 underline' : 'text-brand-700 bg-brand-50') : (isHighContrast ? 'text-white hover:bg-gray-900 hover:text-yellow-400' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-700')}`}
                           >
                             {link.name}
                           </a>
@@ -141,7 +157,7 @@ export const Header: React.FC = () => {
                 </div>
 
                 {navLinks.slice(3).map((link) => (
-                  <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={navLinkClass}>
+                  <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={desktopItemClass(link.path)}>
                     {link.name}
                   </a>
                 ))}
@@ -178,18 +194,18 @@ export const Header: React.FC = () => {
             <div className="flex-1 overflow-y-auto py-6 px-5">
               <nav className="flex flex-col space-y-1">
                 {navLinks.slice(0, 3).map((link) => (
-                   <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={`text-lg font-medium px-4 py-3 rounded-xl ${isHighContrast ? 'text-white hover:bg-gray-900 hover:text-yellow-400' : 'text-slate-800 hover:bg-slate-50 hover:text-brand-700'}`}>
+                   <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={mobileItemClass(link.path)} aria-current={isCurrentPath(link.path) ? 'page' : undefined}>
                      {link.name}
                    </a>
                 ))}
                 <div className="mt-4 mb-1 px-4 text-xs font-bold uppercase tracking-wider text-slate-400">Cenniki</div>
                 {priceLinks.map((link) => (
-                  <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={`text-base font-medium px-4 py-2.5 rounded-lg ${isHighContrast ? 'text-gray-300 hover:text-yellow-400' : 'text-slate-600 hover:bg-slate-50'}`}>
+                  <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={mobileItemClass(link.path, true)} aria-current={isCurrentPath(link.path) ? 'page' : undefined}>
                     {link.name}
                   </a>
                 ))}
                 {navLinks.slice(3).map((link) => (
-                   <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={`text-lg font-medium px-4 py-3 rounded-xl ${isHighContrast ? 'text-white hover:bg-gray-900 hover:text-yellow-400' : 'text-slate-800 hover:bg-slate-50 hover:text-brand-700'}`}>
+                   <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={mobileItemClass(link.path)}>
                      {link.name}
                    </a>
                 ))}
@@ -201,7 +217,7 @@ export const Header: React.FC = () => {
                     target={link.external ? '_blank' : undefined}
                     rel={link.external ? 'noreferrer' : undefined}
                     onClick={(e) => { if (!link.external) handleNavClick(e, link.path); else closeDrawer(); }}
-                    className={`text-base font-medium px-4 py-2.5 rounded-lg ${isHighContrast ? 'text-gray-300 hover:text-yellow-400' : 'text-slate-600 hover:bg-slate-50'}`}
+                    className={mobileItemClass(link.path, true)}
                   >
                     {link.name}
                   </a>

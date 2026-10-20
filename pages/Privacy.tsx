@@ -9,10 +9,10 @@ export const Privacy: React.FC = () => {
 
   return (
     // Updated padding to pt-32/pt-40 and width to max-w-screen-2xl
-    <div className={`min-h-screen py-16 pt-32 md:pt-40 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
+    <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`p-8 rounded-2xl shadow-sm max-w-4xl mx-auto ${isHighContrast ? 'bg-gray-900 border border-yellow-400' : 'bg-white'}`}>
-          <h1 className={`text-3xl font-bold mb-8 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Polityka Prywatności i Klauzula RODO</h1>
+          <h1 className={`text-2xl md:text-3xl font-semibold mb-8 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Polityka prywatności i klauzula RODO</h1>
           
           <div className={`space-y-8 ${isHighContrast ? 'text-gray-300' : 'text-gray-700'}`}>
             <section>

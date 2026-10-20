@@ -8,11 +8,11 @@ export const PozCard: React.FC = () => {
 
   return (
     // Updated padding to pt-32/pt-40 and width to max-w-screen-2xl
-    <div className={`min-h-screen py-16 pt-32 md:pt-40 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
+    <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-12">
-          <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Karta POZ / Deklaracja</h1>
+          <h1 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Karta POZ / Deklaracja</h1>
           <p className={`text-lg ${isHighContrast ? 'text-white' : 'text-gray-600'}`}>
             Zostań naszym pacjentem składając deklarację wyboru lekarza, pielęgniarki i położnej POZ.
           </p>

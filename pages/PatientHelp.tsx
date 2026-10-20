@@ -7,11 +7,11 @@ export const PatientHelp: React.FC = () => {
 
   return (
     // Increased pt-32/pt-40 to pt-36/pt-48 to clear the header
-    <div className={`min-h-screen py-16 pt-36 md:pt-48 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
+    <div className={`min-h-screen py-16 pt-28 md:pt-36 ${isHighContrast ? 'bg-black text-white' : 'bg-surface'}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <header className="mb-12 text-center">
-          <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${isHighContrast ? 'text-yellow-400' : 'text-gray-900'}`}>Gdzie po pomoc?</h1>
+          <h1 className={`text-2xl md:text-3xl font-semibold mb-3 ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Gdzie po pomoc?</h1>
           <p className={`text-lg ${isHighContrast ? 'text-white' : 'text-gray-600'}`}>
             Informacje o pomocy medycznej w nocy, w weekendy i w stanach nagłych.
           </p>
@@ -56,7 +56,7 @@ export const PatientHelp: React.FC = () => {
                 W przypadku nagłego zagrożenia zdrowia lub życia (np. utrata przytomności, bóle w klatce piersiowej, wypadki) należy bezzwłocznie wezwać pogotowie.
             </p>
             <div className="text-center py-6">
-                <a href="tel:112" className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white text-3xl font-bold rounded-full hover:bg-red-700 shadow-lg hover:scale-105 transition-transform">
+                <a href="tel:112" className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white text-3xl font-bold rounded-lg hover:bg-red-700 shadow-sm">
                     <Phone size={32} /> 112
                 </a>
                 <p className="mt-2 text-sm opacity-75">lub 999</p>

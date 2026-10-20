@@ -1,8 +1,9 @@
 import React from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AccessibilityProvider } from './contexts/AccessibilityContext';
 import { CookieProvider } from './contexts/CookieContext';
 import { Layout } from './components/Layout';
+import { LegacyHashRedirect } from './components/LegacyHashRedirect';
 import { Home } from './pages/Home';
 import { Registration } from './pages/Registration';
 import { Privacy } from './pages/Privacy';
@@ -16,7 +17,8 @@ const App: React.FC = () => {
   return (
     <AccessibilityProvider>
       <CookieProvider>
-        <HashRouter>
+        <BrowserRouter>
+          <LegacyHashRedirect />
           <ScrollToTop />
           <Layout>
             <Routes>
@@ -29,7 +31,7 @@ const App: React.FC = () => {
               <Route path="/cennik-szczepien" element={<VaccinationPriceList />} />
             </Routes>
           </Layout>
-        </HashRouter>
+        </BrowserRouter>
       </CookieProvider>
     </AccessibilityProvider>
   );
