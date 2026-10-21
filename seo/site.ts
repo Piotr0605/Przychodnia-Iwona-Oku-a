@@ -1,5 +1,12 @@
 export const SITE_URL = "https://www.poradniamickiewicza.pl";
 export const SITE_NAME = "NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła";
+export const OG_IMAGE_PATH = "/og-image.png";
+export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
+export const OG_IMAGE_ALT = "NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku";
+export const OG_IMAGE_WIDTH = "1200";
+export const OG_IMAGE_HEIGHT = "630";
+export const INDEX_ROBOTS = "index, follow, max-image-preview:large";
+export const NOINDEX_ROBOTS = "noindex, nofollow";
 
 export const DEFAULT_TITLE = `${SITE_NAME} | Białystok`;
 export const DEFAULT_DESCRIPTION =
@@ -33,7 +40,7 @@ export const PAGE_META: PageMeta[] = [
     path: "/karta-poz",
     title: `Karta POZ i deklaracja wyboru | ${SITE_NAME}`,
     description:
-      "Deklaracja wyboru lekarza, pielęgniarki i położnej podstawowej opieki zdrowotnej w NZOZ Iwona Okuła, Białystok.",
+      "Deklaracja wyboru lekarza, pielęgniarki i położnej podstawowej opieki zdrowotnej w NZOZ Iwona Okuła, ul. Mickiewicza 44A, Białystok.",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -41,7 +48,7 @@ export const PAGE_META: PageMeta[] = [
     path: "/gdzie-po-pomoc",
     title: `Gdzie po pomoc? | ${SITE_NAME}`,
     description:
-      "Gdzie szukać pomocy medycznej poza godzinami pracy przychodni. Informacje dla pacjentów NZOZ Iwona Okuła w Białymstoku.",
+      "Pomoc medyczna poza godzinami przychodni NZOZ Iwona Okuła w Białymstoku: nocna i świąteczna opieka zdrowotna oraz numer alarmowy 112.",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -49,7 +56,7 @@ export const PAGE_META: PageMeta[] = [
     path: "/cennik-uslug",
     title: `Cennik usług prywatnych | ${SITE_NAME}`,
     description:
-      "Cennik usług prywatnych NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła przy ul. Mickiewicza 44A w Białymstoku.",
+      "Cennik usług prywatnych NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła przy ul. Mickiewicza 44A w Białymstoku, poza kontraktem z NFZ.",
     changefreq: "monthly",
     priority: "0.7",
   },
@@ -57,7 +64,7 @@ export const PAGE_META: PageMeta[] = [
     path: "/cennik-szczepien",
     title: `Cennik szczepień | ${SITE_NAME}`,
     description:
-      "Cennik szczepień w NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła, ul. Mickiewicza 44A, Białystok.",
+      "Cennik szczepień zalecanych i dodatkowych (odpłatnych) w NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła, ul. Mickiewicza 44A, Białystok.",
     changefreq: "monthly",
     priority: "0.7",
   },
@@ -65,7 +72,7 @@ export const PAGE_META: PageMeta[] = [
     path: "/polityka-rodo",
     title: `Polityka prywatności i RODO | ${SITE_NAME}`,
     description:
-      "Polityka prywatności i klauzula informacyjna RODO NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku.",
+      "Polityka prywatności i klauzula informacyjna RODO NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła, ul. Mickiewicza 44A, 15-223 Białystok.",
     changefreq: "yearly",
     priority: "0.3",
   },
@@ -74,6 +81,19 @@ export const PAGE_META: PageMeta[] = [
 export function pageUrl(path: string): string {
   if (path === "/") return `${SITE_URL}/`;
   return `${SITE_URL}${path}`;
+}
+
+export const NOT_FOUND_TITLE = `Nie znaleziono strony | ${SITE_NAME}`;
+export const NOT_FOUND_DESCRIPTION =
+  "Ten adres nie istnieje w serwisie NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku.";
+
+/** Collapses trailing slashes and legacy *.html addresses onto the public path. */
+export function normalizePath(pathname: string): string {
+  let path = pathname || "/";
+  if (path.length > 1 && path.endsWith("/")) path = path.replace(/\/+$/, "");
+  if (path === "/index.html") return "/";
+  if (path.endsWith(".html")) path = path.slice(0, -".html".length) || "/";
+  return path || "/";
 }
 
 export const clinicJsonLd = {
