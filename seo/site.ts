@@ -2,6 +2,9 @@ export const SITE_URL = "https://www.poradniamickiewicza.pl";
 export const SITE_NAME = "NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła";
 export const OG_IMAGE_PATH = "/og-image.png";
 export const OG_IMAGE_URL = `${SITE_URL}${OG_IMAGE_PATH}`;
+export const LOGO_PATH = "/icon-512.png";
+export const LOGO_URL = `${SITE_URL}${LOGO_PATH}`;
+export const LOGO_SIZE = 512;
 export const OG_IMAGE_ALT = "NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku";
 export const OG_IMAGE_WIDTH = "1200";
 export const OG_IMAGE_HEIGHT = "630";
@@ -101,6 +104,12 @@ export const clinicJsonLd = {
   "@type": "MedicalClinic",
   name: SITE_NAME,
   url: `${SITE_URL}/`,
+  logo: {
+    "@type": "ImageObject",
+    url: LOGO_URL,
+    width: LOGO_SIZE,
+    height: LOGO_SIZE,
+  },
   telephone: "+48857482312",
   medicalSpecialty: "PrimaryCare",
   address: {
