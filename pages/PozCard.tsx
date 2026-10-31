@@ -25,7 +25,7 @@ export const PozCard: React.FC = () => {
              <ul className={`space-y-4 ${isHighContrast ? 'text-gray-300' : 'text-gray-600'}`}>
                {[
                  'Bezpłatna opieka w ramach NFZ',
-                 'Dostęp do doświadczonych lekarzy rodzinnych i pediatrów',
+                 'Dostęp do doświadczonych lekarzy rodzinnych',
                  'Szybka diagnostyka laboratoryjna na miejscu',
                  'Wizyty domowe w uzasadnionych przypadkach medycznych'
                ].map((item, i) => (

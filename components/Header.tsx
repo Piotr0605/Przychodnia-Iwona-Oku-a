@@ -53,7 +53,7 @@ export const Header: React.FC = () => {
 
   const moreLinks = [
     { name: 'Gdzie po pomoc?', path: '/gdzie-po-pomoc', external: false },
-    { name: 'Kalendarz szczepień', path: 'https://szczepienia.pzh.gov.pl/kalendarz-szczepien-2024/', external: true },
+    { name: 'Kalendarz szczepień', path: 'https://szczepienia.pzh.gov.pl/kalendarz-szczepien-2026/', external: true },
   ];
 
   const isCurrentPath = (path: string) => !path.startsWith('/#') && location.pathname === path;

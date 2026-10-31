@@ -37,7 +37,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/cennik-uslug" className={linkClass}>Cennik usług prywatnych</Link></li>
               <li><Link to="/cennik-szczepien" className={linkClass}>Cennik szczepień</Link></li>
               <li>
-                <a href="https://szczepienia.pzh.gov.pl/kalendarz-szczepien-2024/" className={linkClass} target="_blank" rel="noreferrer">
+                <a href="https://szczepienia.pzh.gov.pl/kalendarz-szczepien-2026/" className={linkClass} target="_blank" rel="noreferrer">
                   Kalendarz szczepień
                 </a>
               </li>
