@@ -59,6 +59,9 @@ export const Footer: React.FC = () => {
           <p className={`text-sm ${isHighContrast ? 'text-yellow-400' : 'text-slate-500'}`}>
             &copy; {currentYear} NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła. Wszelkie prawa zastrzeżone.
           </p>
+          <p className="mt-3 text-sm">
+            <a href="/dofinansowanie" className={linkClass}>Dofinansowanie (Fundusze Europejskie)</a>
+          </p>
         </div>
       </div>
     </footer>
