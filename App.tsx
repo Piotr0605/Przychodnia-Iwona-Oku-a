@@ -11,6 +11,7 @@ import { PozCard } from './pages/PozCard';
 import { PatientHelp } from './pages/PatientHelp';
 import { PrivatePriceList } from './pages/PrivatePriceList';
 import { VaccinationPriceList } from './pages/VaccinationPriceList';
+import { News } from './pages/News';
 import { NotFound } from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -36,6 +37,7 @@ export const AppRoutes: React.FC = () => {
           <Route path="/gdzie-po-pomoc" element={<PatientHelp />} />
           <Route path="/cennik-uslug" element={<PrivatePriceList />} />
           <Route path="/cennik-szczepien" element={<VaccinationPriceList />} />
+          <Route path="/aktualnosci" element={<News />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
