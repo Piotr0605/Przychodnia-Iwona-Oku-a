@@ -38,21 +38,21 @@ export const PozCard: React.FC = () => {
            </div>
 
            {/* Column 2: Action */}
-           <div className={`p-8 rounded-2xl shadow-sm h-full flex flex-col justify-center items-center text-center ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-500 text-white'}`}>
+           <div className={`p-8 rounded-2xl shadow-sm h-full flex flex-col justify-center items-center text-center ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-700 text-white'}`}>
               <Download size={48} className="mb-4 opacity-80" />
               <h2 className="text-2xl font-bold mb-4">Pobierz Deklarację</h2>
-              <p className="mb-8 opacity-90">
+              <p className="mb-8">
                 Wypełnij formularz w domu i przynieś go do naszej rejestracji, aby zaoszczędzić czas.
               </p>
               <Button 
                 variant="white" 
-                className={isHighContrast ? 'bg-black text-yellow-400 border border-black' : 'text-brand-600'}
+                className={isHighContrast ? 'bg-black text-yellow-400 border border-black' : 'text-brand-700'}
                 external={true}
                 to="https://www.gov.pl/attachment/e2429539-655b-4786-9ef1-61c7c2b0b340"
               >
                 Pobierz PDF
               </Button>
-              <p className="mt-6 text-sm opacity-80">
+              <p className="mt-6 text-sm">
                 Format PDF, rozmiar ok. 2 MB
               </p>
            </div>

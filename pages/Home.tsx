@@ -126,7 +126,7 @@ export const Home: React.FC = () => {
                   </div>
                   <div className={`mt-3 pt-3 border-t flex items-baseline justify-between gap-4 ${isHighContrast ? 'border-gray-800' : 'border-slate-100'}`}>
                     <dt className={`whitespace-nowrap ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>Sobota–niedziela</dt>
-                    <dd className={`whitespace-nowrap font-semibold ${isHighContrast ? 'text-gray-500' : 'text-slate-400'}`}>Nieczynne</dd>
+                    <dd className={`whitespace-nowrap font-semibold ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>Nieczynne</dd>
                   </div>
                 </dl>
 
@@ -232,7 +232,7 @@ export const Home: React.FC = () => {
                         className={`flex items-center gap-4 p-5 rounded-xl border ${person.index >= 3 && !isTeamExpanded ? 'hidden md:flex' : 'flex'} ${isHighContrast ? 'bg-gray-900 border-white' : 'bg-white border-slate-200'}`}
                       >
                         <div
-                          className={`w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold shrink-0 ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-600 text-white'}`}
+                          className={`w-14 h-14 rounded-full flex items-center justify-center text-lg font-bold shrink-0 ${isHighContrast ? 'bg-yellow-400 text-black' : 'bg-brand-700 text-white'}`}
                           aria-hidden="true"
                         >
                           {person.initials}
