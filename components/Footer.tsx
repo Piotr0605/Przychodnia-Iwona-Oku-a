@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
           <p className="mt-3 text-sm">
             <Link to="/aktualnosci" className={linkClass}>Aktualności</Link>
             <span className={`mx-2 ${isHighContrast ? 'text-yellow-400' : 'text-slate-400'}`}>·</span>
-            <a href="/dofinansowanie" className={linkClass}>Dofinansowanie (Fundusze Europejskie)</a>
+            <Link to="/dofinansowanie" className={linkClass}>Dofinansowanie (Fundusze Europejskie)</Link>
           </p>
         </div>
       </div>

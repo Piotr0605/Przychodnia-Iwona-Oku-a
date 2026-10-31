@@ -80,6 +80,14 @@ export const PAGE_META: PageMeta[] = [
     priority: "0.7",
   },
   {
+    path: "/dofinansowanie",
+    title: "Wsparcie POZ Białystok | NZOZ Okuła",
+    description:
+      "Przedsięwzięcie „Wsparcie podstawowej opieki zdrowotnej (POZ)” realizowane przez Iwonę Okułę w Białymstoku, ul. Mickiewicza 44A, ze środków Funduszy Europejskich.",
+    changefreq: "monthly",
+    priority: "0.6",
+  },
+  {
     path: "/polityka-rodo",
     title: "Polityka prywatności i RODO Białystok | NZOZ Okuła",
     description:

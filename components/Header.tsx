@@ -87,7 +87,8 @@ export const Header: React.FC = () => {
 
   const isCurrentPath = (path: string) => !path.startsWith('/#') && location.pathname === path;
   const pricesActive = priceLinks.some((link) => link.path === location.pathname);
-  const newsActive = newsLinks.some((link) => link.path === location.pathname);
+  const newsActive =
+    location.pathname === '/dofinansowanie' || newsLinks.some((link) => link.path === location.pathname);
   const desktopItemClass = (path: string) => {
     if (!isCurrentPath(path)) return navLinkClass;
     return isHighContrast
