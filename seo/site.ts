@@ -72,6 +72,14 @@ export const PAGE_META: PageMeta[] = [
     priority: "0.7",
   },
   {
+    path: "/aktualnosci",
+    title: "Aktualności przychodni Białystok | NZOZ Okuła",
+    description:
+      "Aktualności NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku, w tym informacja o dofinansowaniu przedsięwzięcia Wsparcie POZ.",
+    changefreq: "weekly",
+    priority: "0.7",
+  },
+  {
     path: "/polityka-rodo",
     title: "Polityka prywatności i RODO Białystok | NZOZ Okuła",
     description:

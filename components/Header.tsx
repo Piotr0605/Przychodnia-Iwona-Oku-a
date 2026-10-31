@@ -7,6 +7,7 @@ import { Button } from './Button';
 export const Header: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isPriceMenuOpen, setIsPriceMenuOpen] = useState(false);
+  const [isNewsMenuOpen, setIsNewsMenuOpen] = useState(false);
   const { isHighContrast, isBigFont, toggleHighContrast, toggleBigFont } = useAccessibility();
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ export const Header: React.FC = () => {
   useEffect(() => {
     closeDrawer();
     setIsPriceMenuOpen(false);
+    setIsNewsMenuOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export const Header: React.FC = () => {
     e.preventDefault();
     closeDrawer();
     setIsPriceMenuOpen(false);
+    setIsNewsMenuOpen(false);
 
     if (path.startsWith('/#')) {
       const targetId = path.replace('/#', '');
@@ -73,6 +76,10 @@ export const Header: React.FC = () => {
     { name: 'Cennik szczepień', path: '/cennik-szczepien' },
   ];
 
+  const newsLinks = [
+    { name: 'Wsparcie POZ – dofinansowanie', path: '/aktualnosci' },
+  ];
+
   const moreLinks = [
     { name: 'Gdzie po pomoc?', path: '/gdzie-po-pomoc', external: false },
     { name: 'Kalendarz szczepień', path: 'https://szczepienia.pzh.gov.pl/kalendarz-szczepien-2026/', external: true },
@@ -80,6 +87,7 @@ export const Header: React.FC = () => {
 
   const isCurrentPath = (path: string) => !path.startsWith('/#') && location.pathname === path;
   const pricesActive = priceLinks.some((link) => link.path === location.pathname);
+  const newsActive = newsLinks.some((link) => link.path === location.pathname);
   const desktopItemClass = (path: string) => {
     if (!isCurrentPath(path)) return navLinkClass;
     return isHighContrast
@@ -181,6 +189,36 @@ export const Header: React.FC = () => {
                   )}
                 </div>
 
+                <div
+                  className="relative"
+                  onMouseEnter={() => setIsNewsMenuOpen(true)}
+                  onMouseLeave={() => setIsNewsMenuOpen(false)}
+                >
+                  <button
+                    className={`${newsActive ? desktopItemClass(newsLinks[0]?.path ?? '/aktualnosci') : navLinkClass} gap-1`}
+                    aria-expanded={isNewsMenuOpen}
+                    onClick={() => setIsNewsMenuOpen((open) => !open)}
+                  >
+                    Aktualności <ChevronDown size={16} />
+                  </button>
+                  {isNewsMenuOpen && (
+                    <div className="absolute top-full left-0 w-72 pt-2">
+                      <div className={`rounded-xl shadow-lg overflow-hidden border py-2 ${isHighContrast ? 'bg-black border-yellow-400' : 'bg-white border-slate-200'}`}>
+                        {newsLinks.map((link) => (
+                          <a
+                            key={link.name}
+                            href={link.path}
+                            onClick={(e) => handleNavClick(e, link.path)}
+                            className={`block px-4 py-2.5 text-sm font-medium transition-colors ${isCurrentPath(link.path) ? (isHighContrast ? 'text-yellow-400 underline' : 'text-brand-700 bg-brand-50') : (isHighContrast ? 'text-white hover:bg-gray-900 hover:text-yellow-400' : 'text-slate-700 hover:bg-slate-50 hover:text-brand-700')}`}
+                          >
+                            {link.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 {navLinks.slice(3).map((link) => (
                   <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={desktopItemClass(link.path)}>
                     {link.name}
@@ -229,6 +267,18 @@ export const Header: React.FC = () => {
                 <div className={`mt-4 mb-1 px-4 text-xs font-bold uppercase tracking-wider ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>Cenniki</div>
                 {priceLinks.map((link) => (
                   <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={mobileItemClass(link.path, true)} aria-current={isCurrentPath(link.path) ? 'page' : undefined}>
+                    {link.name}
+                  </a>
+                ))}
+                <div className={`mt-4 mb-1 px-4 text-xs font-bold uppercase tracking-wider ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>Aktualności</div>
+                {newsLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    onClick={(e) => handleNavClick(e, link.path)}
+                    className={mobileItemClass(link.path, true)}
+                    aria-current={isCurrentPath(link.path) ? 'page' : undefined}
+                  >
                     {link.name}
                   </a>
                 ))}
