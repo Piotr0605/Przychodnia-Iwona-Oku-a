@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Phone, Eye, Type, Clock, ChevronDown } from 'lucide-react';
 import { useAccessibility } from '../contexts/AccessibilityContext';
@@ -10,6 +10,9 @@ export const Header: React.FC = () => {
   const { isHighContrast, isBigFont, toggleHighContrast, toggleBigFont } = useAccessibility();
   const location = useLocation();
   const navigate = useNavigate();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerCloseRef = useRef<HTMLButtonElement>(null);
+  const drawerWasOpen = useRef(false);
 
   const closeDrawer = () => setIsDrawerOpen(false);
 
@@ -17,6 +20,25 @@ export const Header: React.FC = () => {
     closeDrawer();
     setIsPriceMenuOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (!isDrawerOpen) {
+      if (drawerWasOpen.current) {
+        drawerWasOpen.current = false;
+        menuButtonRef.current?.focus({ preventScroll: true, focusVisible: true } as FocusOptions);
+      }
+      return;
+    }
+
+    drawerWasOpen.current = true;
+    drawerCloseRef.current?.focus({ preventScroll: true, focusVisible: true } as FocusOptions);
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsDrawerOpen(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isDrawerOpen]);
 
   const handleNavClick = (e: React.MouseEvent, path: string) => {
     if (path.startsWith('http')) return;
@@ -84,26 +106,29 @@ export const Header: React.FC = () => {
     ? 'text-white hover:text-yellow-400 font-bold cursor-pointer inline-flex items-center justify-center h-10 px-3 rounded-lg transition-colors'
     : 'text-slate-700 hover:text-brand-700 font-medium hover:bg-slate-50 inline-flex items-center justify-center h-10 px-3 rounded-lg transition-colors cursor-pointer';
 
+  const contrastLabel = isHighContrast ? 'Wyłącz kontrast' : 'Kontrast';
+  const textSizeLabel = isBigFont ? 'Standardowy tekst' : 'Większy tekst';
+
   return (
     <>
-      <div className={wrapperClass}>
+      <header className={wrapperClass}>
         <div className={`w-full py-2 px-4 text-xs md:text-sm font-medium ${topBarClass}`}>
           <div className="max-w-screen-2xl mx-auto flex justify-between items-center gap-3">
             <span className="flex items-center gap-1.5">
               <Clock size={14} /> Pn–Pt: 8:00–18:00
             </span>
             <div className="flex items-center gap-3">
-              <button onClick={toggleHighContrast} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity focus:outline-none focus:ring-1 focus:ring-current rounded px-1">
-                <Eye size={14} /><span className="hidden sm:inline">{isHighContrast ? 'Wyłącz kontrast' : 'Kontrast'}</span>
+              <button type="button" onClick={toggleHighContrast} aria-pressed={isHighContrast} aria-label={contrastLabel} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity focus:outline-none focus:ring-1 focus:ring-current rounded px-1">
+                <Eye size={14} /><span className="hidden sm:inline">{contrastLabel}</span>
               </button>
-              <button onClick={toggleBigFont} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity focus:outline-none focus:ring-1 focus:ring-current rounded px-1">
-                <Type size={14} /><span className="hidden md:inline">{isBigFont ? 'Standardowy tekst' : 'Większy tekst'}</span>
+              <button type="button" onClick={toggleBigFont} aria-pressed={isBigFont} aria-label={textSizeLabel} className="flex items-center gap-1.5 hover:opacity-80 transition-opacity focus:outline-none focus:ring-1 focus:ring-current rounded px-1">
+                <Type size={14} /><span className="hidden md:inline">{textSizeLabel}</span>
               </button>
             </div>
           </div>
         </div>
 
-        <header className="w-full py-2">
+        <div className="w-full py-2">
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center gap-4">
               <Link to="/" className="flex items-center gap-2 md:gap-4 group min-w-0">
@@ -172,24 +197,27 @@ export const Header: React.FC = () => {
                 85 748 23 12
               </a>
               <button
-                className={`xl:hidden p-2 rounded-md transition-colors ${isHighContrast ? 'text-yellow-400 hover:bg-gray-800' : 'text-slate-700 hover:bg-slate-100'}`}
+                ref={menuButtonRef}
+                type="button"
+                className={`xl:hidden p-2 rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-700 ${isHighContrast ? 'text-yellow-400 hover:bg-gray-800 focus-visible:ring-yellow-400' : 'text-slate-700 hover:bg-slate-100'}`}
                 onClick={() => setIsDrawerOpen(true)}
                 aria-label="Otwórz menu"
+                aria-expanded={isDrawerOpen}
+                aria-controls="mobile-menu"
               >
                 <Menu size={32} strokeWidth={1.5} />
               </button>
             </div>
           </div>
-        </header>
-      </div>
+        </div>
+      </header>
 
-      {isDrawerOpen && (
-        <div className="fixed inset-0 z-[100] xl:hidden">
+      <div id="mobile-menu" className={`${isDrawerOpen ? '' : 'hidden'} fixed inset-0 z-[100] xl:hidden`}>
           <div className="fixed inset-0 bg-black/50" onClick={closeDrawer}></div>
           <div className={`fixed inset-y-0 right-0 w-[85%] max-w-xs shadow-2xl flex flex-col ${isHighContrast ? 'bg-black border-l border-yellow-400' : 'bg-white'}`}>
             <div className="p-5 flex justify-between items-center border-b border-slate-100">
               <span className={`font-bold text-lg ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>Menu</span>
-              <button onClick={closeDrawer} aria-label="Zamknij menu" className={`p-2 rounded-full ${isHighContrast ? 'text-white hover:text-yellow-400' : 'text-slate-500 hover:bg-slate-100'}`}><X size={24} /></button>
+              <button ref={drawerCloseRef} type="button" onClick={closeDrawer} aria-label="Zamknij menu" className={`p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-700 ${isHighContrast ? 'text-white hover:text-yellow-400 focus-visible:ring-yellow-400' : 'text-slate-700 hover:bg-slate-100'}`}><X size={24} /></button>
             </div>
             <div className="flex-1 overflow-y-auto py-6 px-5">
               <nav className="flex flex-col space-y-1">
@@ -198,7 +226,7 @@ export const Header: React.FC = () => {
                      {link.name}
                    </a>
                 ))}
-                <div className="mt-4 mb-1 px-4 text-xs font-bold uppercase tracking-wider text-slate-400">Cenniki</div>
+                <div className={`mt-4 mb-1 px-4 text-xs font-bold uppercase tracking-wider ${isHighContrast ? 'text-gray-300' : 'text-slate-600'}`}>Cenniki</div>
                 {priceLinks.map((link) => (
                   <a key={link.name} href={link.path} onClick={(e) => handleNavClick(e, link.path)} className={mobileItemClass(link.path, true)} aria-current={isCurrentPath(link.path) ? 'page' : undefined}>
                     {link.name}
@@ -234,8 +262,7 @@ export const Header: React.FC = () => {
               </Button>
             </div>
           </div>
-        </div>
-      )}
+      </div>
     </>
   );
 };
