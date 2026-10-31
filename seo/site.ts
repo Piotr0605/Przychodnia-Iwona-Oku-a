@@ -11,7 +11,7 @@ export const OG_IMAGE_HEIGHT = "630";
 export const INDEX_ROBOTS = "index, follow, max-image-preview:large";
 export const NOINDEX_ROBOTS = "noindex, nofollow";
 
-export const DEFAULT_TITLE = `${SITE_NAME} | Białystok`;
+export const DEFAULT_TITLE = "Przychodnia POZ Białystok | NZOZ Okuła";
 export const DEFAULT_DESCRIPTION =
   "NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku. Opieka POZ dla całej rodziny, ul. Mickiewicza 44A. Rejestracja: 85 748 23 12.";
 
@@ -33,7 +33,7 @@ export const PAGE_META: PageMeta[] = [
   },
   {
     path: "/rejestracja",
-    title: `Rejestracja pacjentów | ${SITE_NAME}`,
+    title: "Rejestracja pacjentów Białystok | NZOZ Okuła",
     description:
       "Jak umówić wizytę w NZOZ Iwona Okuła w Białymstoku. Rejestracja telefoniczna 85 748 23 12, poniedziałek–piątek 8:00–18:00, ul. Mickiewicza 44A.",
     changefreq: "monthly",
@@ -41,7 +41,7 @@ export const PAGE_META: PageMeta[] = [
   },
   {
     path: "/karta-poz",
-    title: `Karta POZ i deklaracja wyboru | ${SITE_NAME}`,
+    title: "Karta POZ i deklaracja wyboru Białystok | NZOZ Okuła",
     description:
       "Deklaracja wyboru lekarza, pielęgniarki i położnej podstawowej opieki zdrowotnej w NZOZ Iwona Okuła, ul. Mickiewicza 44A, Białystok.",
     changefreq: "monthly",
@@ -49,7 +49,7 @@ export const PAGE_META: PageMeta[] = [
   },
   {
     path: "/gdzie-po-pomoc",
-    title: `Gdzie po pomoc? | ${SITE_NAME}`,
+    title: "Gdzie po pomoc? Białystok | NZOZ Okuła",
     description:
       "Pomoc medyczna poza godzinami przychodni NZOZ Iwona Okuła w Białymstoku: nocna i świąteczna opieka zdrowotna oraz numer alarmowy 112.",
     changefreq: "monthly",
@@ -57,7 +57,7 @@ export const PAGE_META: PageMeta[] = [
   },
   {
     path: "/cennik-uslug",
-    title: `Cennik usług prywatnych | ${SITE_NAME}`,
+    title: "Cennik usług prywatnych Białystok | NZOZ Okuła",
     description:
       "Cennik usług prywatnych NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła przy ul. Mickiewicza 44A w Białymstoku, poza kontraktem z NFZ.",
     changefreq: "monthly",
@@ -65,7 +65,7 @@ export const PAGE_META: PageMeta[] = [
   },
   {
     path: "/cennik-szczepien",
-    title: `Cennik szczepień | ${SITE_NAME}`,
+    title: "Cennik szczepień Białystok | NZOZ Okuła",
     description:
       "Cennik szczepień zalecanych i dodatkowych (odpłatnych) w NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła, ul. Mickiewicza 44A, Białystok.",
     changefreq: "monthly",
@@ -73,7 +73,7 @@ export const PAGE_META: PageMeta[] = [
   },
   {
     path: "/polityka-rodo",
-    title: `Polityka prywatności i RODO | ${SITE_NAME}`,
+    title: "Polityka prywatności i RODO Białystok | NZOZ Okuła",
     description:
       "Polityka prywatności i klauzula informacyjna RODO NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła, ul. Mickiewicza 44A, 15-223 Białystok.",
     changefreq: "yearly",
@@ -86,7 +86,7 @@ export function pageUrl(path: string): string {
   return `${SITE_URL}${path}`;
 }
 
-export const NOT_FOUND_TITLE = `Nie znaleziono strony | ${SITE_NAME}`;
+export const NOT_FOUND_TITLE = "Nie znaleziono strony Białystok | NZOZ Okuła";
 export const NOT_FOUND_DESCRIPTION =
   "Ten adres nie istnieje w serwisie NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku.";
 

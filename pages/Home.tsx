@@ -83,7 +83,7 @@ export const Home: React.FC = () => {
               </p>
               <div className="space-y-2">
                 <h1 className={`text-3xl md:text-4xl font-semibold tracking-tight ${isHighContrast ? 'text-yellow-400' : 'text-slate-900'}`}>
-                  Przychodnia POZ
+                  Przychodnia POZ w Białymstoku
                 </h1>
                 <p className={`flex items-center gap-2 text-base md:text-lg ${isHighContrast ? 'text-white' : 'text-slate-600'}`}>
                   <MapPin size={18} className={`shrink-0 ${isHighContrast ? 'text-yellow-400' : 'text-brand-700'}`} aria-hidden="true" />
