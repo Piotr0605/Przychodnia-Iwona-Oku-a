@@ -12,6 +12,7 @@ import { PatientHelp } from './pages/PatientHelp';
 import { PrivatePriceList } from './pages/PrivatePriceList';
 import { VaccinationPriceList } from './pages/VaccinationPriceList';
 import { News } from './pages/News';
+import { Funding } from './pages/Funding';
 import { NotFound } from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -38,6 +39,7 @@ export const AppRoutes: React.FC = () => {
           <Route path="/cennik-uslug" element={<PrivatePriceList />} />
           <Route path="/cennik-szczepien" element={<VaccinationPriceList />} />
           <Route path="/aktualnosci" element={<News />} />
+          <Route path="/dofinansowanie" element={<Funding />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

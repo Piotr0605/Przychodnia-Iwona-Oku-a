@@ -9,14 +9,6 @@ import { PAGE_META } from './seo/site'
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url))
 
-function rewriteFundingPage(req: { url?: string }) {
-  const raw = req.url ?? ''
-  const pathname = (raw.split('?')[0] ?? '').replace(/\/$/, '') || '/'
-  if (pathname !== '/dofinansowanie') return
-  const query = raw.includes('?') ? raw.slice(raw.indexOf('?')) : ''
-  req.url = `/dofinansowanie.html${query}`
-}
-
 function injectRenderedBody(html: string, pathname: string): string {
   const body = renderRouteBody(pathname)
   if (!body.includes('<h1')) {
@@ -49,16 +41,9 @@ function prerenderRouteHtml(): Plugin {
         injectRenderedBody(applyHtmlMeta(template, metaForNotFound()), '/404'),
       )
     },
-    configureServer(server) {
-      server.middlewares.use((req, _res, next) => {
-        rewriteFundingPage(req)
-        next()
-      })
-    },
     configurePreviewServer(server) {
       server.middlewares.use((req, _res, next) => {
         const message = req as { url?: string }
-        rewriteFundingPage(message)
         const raw = message.url ?? ''
         const pathname = (raw.split('?')[0] ?? '').replace(/\/$/, '') || '/'
         const page = PAGE_META.find((entry) => entry.path === pathname)

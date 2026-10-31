@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAccessibility } from '../contexts/AccessibilityContext';
 
 export const News: React.FC = () => {
@@ -30,9 +31,9 @@ export const News: React.FC = () => {
             Informacja o Przedsięwzięciu „Wsparcie podstawowej opieki zdrowotnej (POZ)” dofinansowanym ze środków Funduszy Europejskich.
           </p>
           <div className="mt-6">
-            <a href="/dofinansowanie" className={buttonClass}>
+            <Link to="/dofinansowanie" className={buttonClass}>
               Pełna informacja o dofinansowaniu
-            </a>
+            </Link>
           </div>
         </article>
       </div>
