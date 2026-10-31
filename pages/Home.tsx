@@ -59,7 +59,7 @@ export const Home: React.FC = () => {
       people: [
         { initials: 'JP', name: 'mgr Jolanta Parafianowicz', role: 'Pielęgniarka' },
         { initials: 'RM', name: 'mgr Renata Mróz', role: 'Pielęgniarka' },
-        { initials: 'KB', name: 'mgr Katarzyna Kitlasz-Baczyńska', role: 'Położna' },
+        { initials: 'KH', name: 'mgr Katarzyna Haraburda', role: 'Położna' },
       ],
     },
     {
