@@ -14,28 +14,42 @@ import { VaccinationPriceList } from './pages/VaccinationPriceList';
 import { NotFound } from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 
-const App: React.FC = () => {
+export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <AccessibilityProvider>
-      <CookieProvider>
-        <BrowserRouter>
-          <LegacyHashRedirect />
-          <ScrollToTop />
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/rejestracja" element={<Registration />} />
-              <Route path="/polityka-rodo" element={<Privacy />} />
-              <Route path="/karta-poz" element={<PozCard />} />
-              <Route path="/gdzie-po-pomoc" element={<PatientHelp />} />
-              <Route path="/cennik-uslug" element={<PrivatePriceList />} />
-              <Route path="/cennik-szczepien" element={<VaccinationPriceList />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
-      </CookieProvider>
+      <CookieProvider>{children}</CookieProvider>
     </AccessibilityProvider>
+  );
+};
+
+export const AppRoutes: React.FC = () => {
+  return (
+    <>
+      <LegacyHashRedirect />
+      <ScrollToTop />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rejestracja" element={<Registration />} />
+          <Route path="/polityka-rodo" element={<Privacy />} />
+          <Route path="/karta-poz" element={<PozCard />} />
+          <Route path="/gdzie-po-pomoc" element={<PatientHelp />} />
+          <Route path="/cennik-uslug" element={<PrivatePriceList />} />
+          <Route path="/cennik-szczepien" element={<VaccinationPriceList />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <AppShell>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </AppShell>
   );
 };
 

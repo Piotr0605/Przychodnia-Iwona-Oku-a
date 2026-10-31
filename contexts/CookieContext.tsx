@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type ConsentStatus = 'accepted' | 'rejected' | null;
 
@@ -22,7 +22,11 @@ function readStoredConsent(): ConsentStatus {
 }
 
 export const CookieProvider = ({ children }: { children: ReactNode }) => {
-  const [cookieConsent, setCookieConsent] = useState<ConsentStatus>(readStoredConsent);
+  const [cookieConsent, setCookieConsent] = useState<ConsentStatus>(null);
+
+  useEffect(() => {
+    setCookieConsent(readStoredConsent());
+  }, []);
 
   const acceptCookies = () => {
     setCookieConsent('accepted');
