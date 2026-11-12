@@ -3,14 +3,14 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "przychodnia-iwona-oku-a\\.vercel\\.app"
         }
       ],
-      "destination": "https://www.poradniamickiewicza.pl/:path*",
+      "destination": "https://www.poradniamickiewicza.pl/$1",
       "permanent": true
     }
   ],
