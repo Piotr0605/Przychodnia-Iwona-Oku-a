@@ -39,6 +39,13 @@ function assertDistinctPageMeta(): void {
 function prerenderRouteHtml(): Plugin {
   return {
     name: 'prerender-route-html',
+    // index.html carries no page metadata of its own. seo/site.ts is the one
+    // source, here for the dev server and below for every built file.
+    transformIndexHtml(html) {
+      const home = PAGE_META.find((page) => page.path === '/')
+      if (!home) throw new Error('seo: PAGE_META has no homepage entry')
+      return applyHtmlMeta(html, metaForPage(home))
+    },
     closeBundle() {
       assertDistinctPageMeta()
       const dist = path.join(projectRoot, 'dist')
