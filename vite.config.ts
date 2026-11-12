@@ -6,6 +6,7 @@ import react from '@vitejs/plugin-react'
 import { applyHtmlMeta, metaForNotFound, metaForPage } from './seo/applyHtmlMeta'
 import { renderRouteBody } from './seo/renderRoute'
 import { PAGE_META } from './seo/site'
+import { buildSitemapXml } from './seo/sitemap'
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url))
 
@@ -19,12 +20,27 @@ function injectRenderedBody(html: string, pathname: string): string {
   return next
 }
 
+// Two URLs that share a title or a description compete for the same query.
+function assertDistinctPageMeta(): void {
+  for (const field of ['path', 'title', 'description'] as const) {
+    const owners = new Map<string, string>()
+    for (const page of PAGE_META) {
+      const owner = owners.get(page[field])
+      if (owner !== undefined) {
+        throw new Error(`seo: ${page.path} repeats the ${field} of ${owner}`)
+      }
+      owners.set(page[field], page.path)
+    }
+  }
+}
+
 // Google reads the first HTML response. One shared shell made every URL
 // look like the homepage. Write a file per public route at build time.
 function prerenderRouteHtml(): Plugin {
   return {
     name: 'prerender-route-html',
     closeBundle() {
+      assertDistinctPageMeta()
       const dist = path.join(projectRoot, 'dist')
       const indexPath = path.join(dist, 'index.html')
       const template = fs.readFileSync(indexPath, 'utf8')
@@ -40,6 +56,7 @@ function prerenderRouteHtml(): Plugin {
         path.join(dist, '404.html'),
         injectRenderedBody(applyHtmlMeta(template, metaForNotFound()), '/404'),
       )
+      fs.writeFileSync(path.join(dist, 'sitemap.xml'), buildSitemapXml())
     },
     configurePreviewServer(server) {
       server.middlewares.use((req, _res, next) => {
