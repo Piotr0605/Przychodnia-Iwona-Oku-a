@@ -8,7 +8,7 @@ import {
   OG_IMAGE_URL,
   OG_IMAGE_WIDTH,
   SITE_NAME,
-  clinicJsonLd,
+  pageJsonLdText,
   pageUrl,
   type PageMeta,
 } from "./site";
@@ -77,7 +77,7 @@ export function metaForPage(page: PageMeta): HtmlMeta {
     canonical: url,
     robots: INDEX_ROBOTS,
     url,
-    jsonLd: page.path === "/" ? JSON.stringify(clinicJsonLd).replace(/</g, "\\u003c") : null,
+    jsonLd: pageJsonLdText(page),
   };
 }
 

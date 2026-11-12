@@ -11,9 +11,10 @@ import {
   OG_IMAGE_WIDTH,
   PAGE_META,
   SITE_NAME,
-  clinicJsonLd,
   normalizePath,
+  pageJsonLdText,
   pageUrl,
+  type PageMeta,
 } from "../seo/site";
 
 function upsertMeta(attribute: "name" | "property", key: string, content: string) {
@@ -44,16 +45,20 @@ function removeCanonical() {
   document.head.querySelector('link[rel="canonical"]')?.remove();
 }
 
-function syncJsonLd(include: boolean) {
-  const existing = document.head.querySelector('script[type="application/ld+json"]');
-  if (!include) {
+function syncJsonLd(page: PageMeta | undefined) {
+  const existing = document.head.querySelector<HTMLScriptElement>('script[type="application/ld+json"]');
+  if (!page) {
     existing?.remove();
     return;
   }
-  if (existing) return;
+  const text = pageJsonLdText(page);
+  if (existing) {
+    if (existing.text !== text) existing.text = text;
+    return;
+  }
   const script = document.createElement("script");
   script.type = "application/ld+json";
-  script.text = JSON.stringify(clinicJsonLd);
+  script.text = text;
   document.head.appendChild(script);
 }
 
@@ -87,7 +92,7 @@ export const DocumentMeta: React.FC = () => {
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
     upsertMeta("name", "twitter:image", OG_IMAGE_URL);
-    syncJsonLd(page?.path === "/");
+    syncJsonLd(page);
   }, [title, description, url, robots, page]);
 
   return null;
