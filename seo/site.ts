@@ -14,9 +14,9 @@ export const OG_IMAGE_HEIGHT = "630";
 export const INDEX_ROBOTS = "index, follow, max-image-preview:large";
 export const NOINDEX_ROBOTS = "noindex, nofollow";
 
-export const DEFAULT_TITLE = "Przychodnia POZ Białystok | NZOZ Okuła";
+export const DEFAULT_TITLE = "Przychodnia POZ Białystok – lekarz rodzinny | NZOZ Okuła";
 export const DEFAULT_DESCRIPTION =
-  "NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku. Opieka POZ dla całej rodziny, ul. Mickiewicza 44A. Rejestracja: 85 748 23 12.";
+  "NZOZ Podstawowa Opieka Zdrowotna Iwona Okuła w Białymstoku. Lekarze rodzinni i opieka POZ dla całej rodziny, ul. Mickiewicza 44A. Rejestracja: 85 748 23 12.";
 
 export type PageMeta = {
   path: string;
